@@ -1,0 +1,12 @@
+Icon?
+.DS_Store
+.svn
+*~
+*.swp
+sftp-config.json
+.remote-sync.json
+.sass-cache
+node_modules
+html/css/*
+!html/css/sass
+html/perch/config/config_private.php

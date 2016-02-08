@@ -1,0 +1,62 @@
+// from http://www.sitepoint.com/using-sass-maps/
+@mixin mq($breakpoint) {
+    @if map-has-key($mqs, $breakpoint) {
+        @media (min-width: #{map-get($mqs, $breakpoint)}) { @content; }
+    }
+    @else {
+        @media (min-width: $breakpoint) { @content }
+    }
+}
+
+@mixin mq_max($breakpoint) {
+    @if map-has-key($mqs, $breakpoint) {
+        @media (max-width: #{map-get($mqs, $breakpoint)}) { @content; }
+    }
+    @else {
+        @media (max-width: $breakpoint) { @content }
+    }
+}
+
+@mixin mq_retina() {
+    @media
+        only screen and (-webkit-min-device-pixel-ratio: 1.5),
+        only screen and (min-device-pixel-ratio: 1.5),
+        only screen and (min-resolution: 144dpi),
+        only screen and (min-resolution: 1.5dppx) {
+            @content
+        }
+}
+
+// debug for showing the screen width in the bottom right
+@mixin screen_width_display {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 0.4em 0.65em;
+    font-family: monospace;
+    font-size: 0.8em;
+    color: #20d832;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+$show-screen-width: false !default;
+@if $show-screen-width == true {
+    $start-at: 300px;
+    $increment-by: 10px;
+
+    $min: floor($start-at/$increment-by);
+    $max: floor(($max-width + 100)/$increment-by);
+
+    body {
+        &:before {
+            @include screen_width_display;
+
+            @for $i from $min through $max {
+                @media screen and (min-width: #{$i * $increment-by}) {
+                    content: "width: #{$i * $increment-by}";
+                }
+            }
+        }
+    }
+}

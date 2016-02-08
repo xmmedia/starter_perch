@@ -1,0 +1,26 @@
+/* global variables */
+$max-width: 71.25em;
+
+$color-white: rgb(255, 255, 255);
+
+$text-color: #444;
+$link-color: rgb(1, 142, 66);
+$headings-color: $link-color;
+
+$border-radius: 2px;
+
+$status--success: rgb(90, 182, 90);
+$status--info: rgb(91, 192, 221);
+$status--warning: rgb(240, 173, 78);
+$status--danger: rgb(217, 82, 78);
+
+$pagination-link-hover: rgba(140, 195, 63, 0.4);
+$pagination-current-border: rgba(32, 36, 41, 0.15);
+$pagination-item-inactive: lighten($text-color, 50%);
+
+$mqs: (
+    handhelds: 20em,
+    wide_handhelds: 35em,
+    tablets: 48em,
+    wide_tablets: 64em
+);

@@ -1,0 +1,32 @@
+/* this file is for public and private/admin pages */
+
+// include this before normalize as normalize override it for some elements
+*, *:after, *:before { box-sizing: border-box; }
+
+@import "normalize";
+
+.clearfix { @extend %clearfix; }
+
+input[type=radio], input[type=checkbox] { margin-right: 0.3em; }
+label { cursor: pointer; }
+td { vertical-align: top; }
+// make images scale automatically when width of the container changes
+img, object, embed { max-width: 100%; }
+img { height: auto; }
+
+// make anchors that are inside headers look like the header, but underline when hovered
+h1, h2, h3 {
+    &:not(.heading-keep_margin):first-child { margin-top: 0; }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        &:hover, &:active {
+            color: inherit;
+            text-decoration: underline;
+        }
+    }
+}
+
+.--no_top_margin { margin-top: 0; }
+.hidden { display: none; }

@@ -1,0 +1,21 @@
+// extends and mixins + normalize + common
+// these shouldn't output anything, only setup the environment
+@import "common/vars", "common/placeholders", "public/vars", "common/clearfix", "common/media", "common/common";
+
+// global styles on the most common elements
+html {
+    font: 100%/1 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: $text-color;
+}
+
+// load common styles
+@import "common/forms", "common/pagination", "common/alerts";
+
+// public only styles
+// ordered from the most common to the narrowest
+@import "public/headings",
+    "public/header",
+    "public/footer",
+    "public/content";
+// page specific
+@import "public/p_index";

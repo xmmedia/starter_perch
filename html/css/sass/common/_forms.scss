@@ -1,0 +1,124 @@
+.input--align_right { text-align: right; }
+
+.form-form_wrap {
+    width: 90%;
+    max-width: 30em;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: $border-radius;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    h2 { margin-top: 0; }
+    h4 { margin-bottom: 0.5em; }
+}
+
+.form-fieldset {
+    margin: 1.5em 0 1em;
+    padding: 0.5em 1em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    .form-field_wrap:last-of-type {
+        margin-bottom: 0.5em;
+    }
+}
+
+@mixin text-input() {
+    input:not([type=submit]):not([type=button]):not([type=file]):not([type=radio]):not([type=checkbox]), textarea, select {
+        @content;
+    }
+}
+
+.form-field_wrap {
+    margin-bottom: 1em;
+    label {
+        display: block;
+        margin-bottom: 0.25em;
+    }
+    @include text-input() {
+        width: 100%;
+        // DH we're not why we have a min-width, so removing for now till the reason is found
+        // min-width: 10em;
+        padding: 0.5em;
+        border: 1px solid rgba($color-dark-grey, 0.15);
+        border-radius: $border-radius;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    input[type=file] { width: 100%; }
+    textarea { height: 10em; }
+}
+
+.form-field_wrap-no_width {
+    @include text-input() {
+        width: auto;
+    }
+}
+
+.form-field-flex {
+    @extend %flex-row_wrap;
+}
+//for non-text elements
+.form-field_wrap-label_inline {
+    label {
+        display: inline-block;
+        margin-right: 1em;
+        margin-bottom: 0;
+        &:hover { color: lighten($text-color, 20%); }
+    }
+}
+
+//for text elements
+.form-field_wrap-flex {
+    display: flex;
+    flex-flow: row no-wrap;
+    align-items: center;
+}
+
+.form-field_prefix {
+    flex: 1 0 auto;
+    margin-right: 0.5em;
+    label { margin-bottom: 0; }
+}
+
+.form-field_suffix {
+    margin-left: 0.25em;
+    flex: 0 0 auto;
+}
+
+.form-field_help {
+    // the padding helps it align better with field above
+    padding-left: 0.1em;
+    font-size: 0.8em;
+    color: lighten($text-color, 17%);
+    font-style: italic;
+}
+
+.form-button_wrap {
+    button, .button { margin-right: 0.5em; }
+}
+
+.form-action_link {
+    font-size: 0.8em;
+    margin-right: 1em;
+    color: rgba($link-color, 0.6);
+    &:hover { color: rgba($link-color, 1); }
+}
+
+.form-field_errors {
+    list-style: none;
+    margin: 0 0 0.25em;
+    padding-left: 0;
+    li {
+        padding: 0.5em;
+        background: #fafafa;
+        border-left: 10px solid $status--danger;
+        border-width: 0px 0px 0px 10px;
+    }
+}
+
+// @todo - not sure if this is where this goes
+.record_actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 20em;
+    margin: 0 auto;
+}

@@ -1,0 +1,6 @@
+.content-wrap {
+    @extend %clearfix;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 1em;
+}
