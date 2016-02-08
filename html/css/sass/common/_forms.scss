@@ -34,10 +34,8 @@
     }
     @include text-input() {
         width: 100%;
-        // DH we're not why we have a min-width, so removing for now till the reason is found
-        // min-width: 10em;
         padding: 0.5em;
-        border: 1px solid rgba($color-dark-grey, 0.15);
+        border: 1px solid $border-color;
         border-radius: $border-radius;
         background-color: rgba(255, 255, 255, 0.9);
     }
