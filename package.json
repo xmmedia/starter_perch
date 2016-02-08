@@ -8,6 +8,7 @@
     "url": "https://github.com/xmmedia/starter_perch"
   },
   "license": "GPL-3.0",
+  "private": true,
   "devDependencies": {
     "colors": "~1.1.2",
     "gulp": "~3.9.0",
