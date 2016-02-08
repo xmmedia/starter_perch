@@ -2,6 +2,7 @@
   "//": "@todo-perch",
   "name": "xm_starter_perch",
   "version": "1.0.0",
+  "description": "Starter for creating Perch CMS sites at XM Media",
   "repository": {
     "type": "git",
     "url": "https://github.com/xmmedia/starter_perch"

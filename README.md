@@ -1,6 +1,6 @@
 # Perch Website Starter
 
-Used to create new projects using the [Perch CMS](https://grabaperch.com/).
+Used to create new projects using the [Perch CMS](https://grabaperch.com/) at XM Media.
 
 ## Setting Up a New Site
 
