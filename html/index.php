@@ -1,6 +1,7 @@
 <?php include('lib/common.php'); ?>
 <?php include('perch/runtime.php'); ?>
 <?php perch_layout('public.head', [
+    // @todo-perch
     'title' => '<Comapny Name>',
     'meta_desc' => 'About the company...',
 ]); ?>
