@@ -1,6 +1,12 @@
 {
+  "//": "@todo-perch",
   "name": "xm_starter_perch",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xmmedia/starter_perch"
+  },
+  "license": "GPL-3.0",
   "devDependencies": {
     "colors": "~1.1.2",
     "gulp": "~3.9.0",
