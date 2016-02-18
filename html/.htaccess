@@ -433,9 +433,10 @@ AddDefaultCharset utf-8
 # ----------------------------------------------------------------------
 
 <IfModule mod_rewrite.c>
-    RewriteCond %{REQUEST_URI} !^/perch
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^([^\.]+)$ $1.php [NC,L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.+)$ $1.php [L,QSA]
 </IfModule>
 
 
