@@ -1,6 +1,5 @@
 <?php
 
-
 // setup some default page perch vars/attributes
 $domain        = 'https://'.$_SERVER["HTTP_HOST"];
 $url           = $domain.$_SERVER["REQUEST_URI"];
