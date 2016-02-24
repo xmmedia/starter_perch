@@ -432,6 +432,9 @@ AddDefaultCharset utf-8
 # | Allow accessing PHP files with .php                                |
 # ----------------------------------------------------------------------
 
+# Note: you can't have a file named the same as a directory.
+# For example, example.php and example/
+
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
