@@ -1,28 +1,28 @@
 <!-- Twitter -->
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary">
 
 <perch:if exists="twitter_name">
-    <meta name="twitter:site" content="<perch:pages id="twitter_name" type="hidden" />" />
+    <meta name="twitter:site" content="<perch:pages id="twitter_name" type="hidden" />">
 </perch:if>
 
 <perch:if exists="og_title">
-    <meta property="twitter:title" content="<perch:pages id="og_title" label="Social title" type="text" escape="true" help="Title for this document with no branding or site name" divider-before="Social Media Settings" />" />
+    <meta property="twitter:title" content="<perch:pages id="og_title" label="Social title" type="text" escape="true" help="Title for this document with no branding or site name" divider-before="Social Media Settings" />">
 <perch:else />
-    <meta property="twitter:title" content="<perch:pages id="pageTitle" type="text" escape="true" />" />
+    <meta property="twitter:title" content="<perch:pages id="pageTitle" type="text" escape="true" />">
 </perch:if>
 
 <perch:if exists="og_description">
-    <meta property="twitter:description" content="<perch:pages id="og_description" label="Social description" type="textarea" size="s" escape="true" />" />
+    <meta property="twitter:description" content="<perch:pages id="og_description" label="Social description" type="textarea" size="s" escape="true" />">
 <perch:else />
     <perch:if exists="description">
-        <meta property="twitter:description" content="<perch:pages id="description" type="textarea" escape="true" />" />
+        <meta property="twitter:description" content="<perch:pages id="description" type="textarea" escape="true" />">
     </perch:if>
 </perch:if>
 
 <perch:if exists="og_image">
-    <meta property="twitter:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image" label="Image when sharing" help="Should be at least 1500x630" type="image" width="1500" />" />
+    <meta property="twitter:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image" label="Image when sharing" help="Should be at least 1500x630" type="image" width="1500" />">
 <perch:else />
-    <meta property="twitter:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image_default" type="hidden" />" />
+    <meta property="twitter:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image_default" type="hidden" />">
 </perch:if>
 
-<meta name="twitter:url" content="<perch:pages id="url" type="hidden" />" />
+<meta name="twitter:url" content="<perch:pages id="url" type="hidden" />">

@@ -1,31 +1,31 @@
 <!-- Facebook -->
-<meta property="og:site_name" content="<perch:pages id="site_name" type="hidden" />" />
-<meta property="og:url" content="<perch:pages id="url" type="hidden" />" />
+<meta property="og:site_name" content="<perch:pages id="site_name" type="hidden" />">
+<meta property="og:url" content="<perch:pages id="url" type="hidden" />">
 
 <perch:if exists="og_title">
-    <meta property="og:title" content="<perch:pages id="og_title" label="Social title" type="text" escape="true" help="Title for this document with no branding or site name" divider-before="Social Media Settings" />" />
+    <meta property="og:title" content="<perch:pages id="og_title" label="Social title" type="text" escape="true" help="Title for this document with no branding or site name" divider-before="Social Media Settings" />">
 <perch:else />
-    <meta property="og:title" content="<perch:pages id="pageTitle" type="text" escape="true" />" />
+    <meta property="og:title" content="<perch:pages id="pageTitle" type="text" escape="true" />">
 </perch:if>
 
 <perch:if exists="og_description">
-    <meta property="og:description" content="<perch:pages id="og_description" label="Social description" type="textarea" size="s" escape="true" help="This will default to the Description if not filled out." />" />
+    <meta property="og:description" content="<perch:pages id="og_description" label="Social description" type="textarea" size="s" escape="true" help="This will default to the Description if not filled out." />">
 <perch:else />
     <perch:if exists="description">
-        <meta property="og:description" content="<perch:pages id="description" type="textarea" escape="true" />" />
+        <meta property="og:description" content="<perch:pages id="description" type="textarea" escape="true" />">
     </perch:if>
 </perch:if>
 
 <perch:if exists="og_image">
-    <meta property="og:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image" label="Image when sharing" help="Should be at least 1500x630" type="image" width="1500" />" />
+    <meta property="og:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image" label="Image when sharing" help="Should be at least 1500x630" type="image" width="1500" />">
 <perch:else />
-    <meta property="og:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image_default" type="hidden" />" />
+    <meta property="og:image" content="<perch:pages id="domain" type="hidden" /><perch:pages id="og_image_default" type="hidden" />">
 </perch:if>
 
 <perch:if exists="og_type">
-    <meta property="og:type" content="<perch:pages id="og_type" label="Facebook type" type="select" options="article,book,profile,website,video,music" allowempty="true" default="website" />" />
+    <meta property="og:type" content="<perch:pages id="og_type" label="Facebook type" type="select" options="article,book,profile,website,video,music" allowempty="true" default="website" />">
 </perch:if>
 
 <perch:if exists="og_author">
-    <meta property="article:author" content="<perch:pages id="og_author" type="hidden" />" />
+    <meta property="article:author" content="<perch:pages id="og_author" type="hidden" />">
 </perch:if>
