@@ -18,6 +18,7 @@
 
     define('PERCH_HTML5', true);
     define('PERCH_SSL', true);
+    define('PERCH_PARANOID', true);
 
     define('PERCH_SCHEDULE_SECRET', '<secret>');
 
