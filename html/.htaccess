@@ -271,13 +271,6 @@ Options -MultiViews
 
 # Serve all resources labeled as `text/html` or `text/plain`
 # with the media type `charset` parameter set to `UTF-8`.
-    # (6)
-    # (6)
-    RewriteCond %{HTTPS} =on
-    RewriteRule ^ - [env=proto:https]
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^ - [env=proto:http]
-
 #
 # https://httpd.apache.org/docs/current/mod/core.html#adddefaultcharset
 
