@@ -1,4 +1,6 @@
 .pagination {
+    //clearfix fixes Safari bug that causes pagination to show up beside other element
+    @include clearfix;
     margin: 1em auto;
     text-align: center;
     a { text-decoration: none; }
@@ -29,6 +31,6 @@ a.pagination-item {
     position: relative;
     padding: 0.25em 0.15em;
     color: $text-color;
-    border: 1px solid $border-color;
+    border: 1px solid rgba($color-dark-grey, 0.15);
     border-radius: $border-radius;
 }

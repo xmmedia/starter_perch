@@ -5,10 +5,11 @@
 
 @import "normalize";
 
-.clearfix { @extend %clearfix; }
-
 input[type=radio], input[type=checkbox] { margin-right: 0.3em; }
-label { cursor: pointer; }
+// make sure everything should h
+a[href], input[type='submit'], input[type='image'], label[for], select, button {
+    cursor: pointer;
+}
 td { vertical-align: top; }
 // make images scale automatically when width of the container changes
 img, object, embed { max-width: 100%; }
@@ -29,4 +30,5 @@ h1, h2, h3 {
 }
 
 .--no_top_margin { margin-top: 0; }
+.--no_margin { margin: 0; }
 .hidden { display: none; }

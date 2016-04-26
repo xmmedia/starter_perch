@@ -1,0 +1,73 @@
+/** modal dialog **/
+.md-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 40em;
+    height: auto;
+    max-height: 80%;
+    overflow-y: hidden;
+    z-index: 2000;
+    visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateX(-50%) translateY(-50%);
+    @include mq(wide_handhelds) {
+        width: 50%;
+        min-width: 320px;
+    }
+}
+.md-modal-show { visibility: visible; }
+.md-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 0;
+    background: rgba(0,0,0,0.8);
+    transition: all 0.3s;
+}
+.md-modal-show ~ .md-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.md-modal-scroll { overflow-y: scroll; }
+.md-content {
+    padding: 0.5em 1.5em;
+    background: #fff;
+    /* Effect: Fade in and scale up */
+    .md-modal & {
+        transform: scale(0.7);
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    .md-modal-show & {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.md-content-center { text-align: center; }
+
+.md-close {
+    display: block;
+    margin: 1em auto;
+}
+.md_close_x {
+    position: absolute;
+    top: 0.4em;
+    right: 1em;
+    display: block;
+    z-index: 2200;
+    font-size: 1.1rem;
+    color: $link-color;
+    text-decoration: none;
+}
+
+.md-button_wrap {
+    margin-bottom: 0.5em;
+    text-align: center;
+}

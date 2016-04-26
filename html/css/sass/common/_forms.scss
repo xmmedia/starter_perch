@@ -35,12 +35,11 @@
     @include text-input() {
         width: 100%;
         padding: 0.5em;
-        border: 1px solid $border-color;
+        border: 1px solid rgba($color-dark-grey, 0.15);
         border-radius: $border-radius;
         background-color: rgba(255, 255, 255, 0.9);
     }
     input[type=file] { width: 100%; }
-    textarea { height: 10em; }
 }
 
 .form-field_wrap-no_width {
@@ -50,9 +49,9 @@
 }
 
 .form-field-flex {
-    @extend %flex-row_wrap;
+    @include flex-row_wrap;
 }
-//for non-text elements
+// for non-text elements
 .form-field_wrap-label_inline {
     label {
         display: inline-block;
@@ -62,10 +61,10 @@
     }
 }
 
-//for text elements
+// for text elements
 .form-field_wrap-flex {
     display: flex;
-    flex-flow: row no-wrap;
+    flex-flow: row nowrap;
     align-items: center;
 }
 
@@ -105,13 +104,15 @@
     padding-left: 0;
     li {
         padding: 0.5em;
+        // @todo should this be a variable
         background: #fafafa;
         border-left: 10px solid $status--danger;
+        // @todo seems like we don't need the "px"
         border-width: 0px 0px 0px 10px;
     }
 }
 
-// @todo - not sure if this is where this goes
+// @todo - not sure if this is where this goes and probably needs to be renamed
 .record_actions {
     display: flex;
     justify-content: space-around;

@@ -1,14 +1,15 @@
 /* global variables */
 $max-width: 71.25em;
+$max-width-narrow: $max-width - 20;
 
 $color-white: rgb(255, 255, 255);
+$color-dark-grey: rgb(32, 36, 41);
 
 $text-color: #444;
 $link-color: rgb(1, 142, 66);
 $headings-color: $link-color;
 
 $border-radius: 2px;
-$border-color: rgba(32, 36, 41, 0.15);
 
 $status--success: rgb(90, 182, 90);
 $status--info: rgb(91, 192, 221);
