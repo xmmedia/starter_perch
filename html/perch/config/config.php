@@ -17,6 +17,8 @@
     define('PERCH_RESPATH', PERCH_LOGINPATH.'/resources');
 
     define('PERCH_HTML5', true);
+    define('PERCH_XHTML_MARKUP', false);
+    define('PERCH_RWD', false);
     define('PERCH_SSL', true);
     define('PERCH_PARANOID', true);
 
