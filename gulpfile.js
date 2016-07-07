@@ -21,7 +21,7 @@ var paths = {
                     'html/bower_components/jquery/dist/jquery.js',
                     'html/js/src/common/svg_icons.js',
                     'html/js/src/public.js'
-                ],
+                ]
         }
     ],
     styles : [
