@@ -10,3 +10,6 @@ Used to create new projects using the [Perch CMS](https://grabaperch.com/) at XM
 4. Make dev redirect change in `.htaccess` (search for `@todo`)
 5. Run `npm install`
 6. Run `bower install`
+7. Run Perch setup at: `/perch/setup`
+8. Delete the `/perch/setup` folder.
+9. Set the appropriate permissions on `/perch/resources` (if needed).
