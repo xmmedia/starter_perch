@@ -76,10 +76,7 @@ gulp.task('scripts', function() {
                     console.log('   ' + 'Uglify JS ERROR'.underline.red);
                     console.log('   Line ' + err.lineNumber + ': ' + err.message.underline.red);
                 })
-                .pipe(sourcemaps.write('.', {
-                    includeContent : false,
-                    sourceRoot : 'src/'
-                }))
+                .pipe(sourcemaps.write('.'))
                 .pipe(size({
                     showFiles: true
                 }))
@@ -113,10 +110,7 @@ gulp.task('styles', function() {
                     console.log('   ' + 'Autoprefixer ERROR'.underline.red);
                     console.log('   ' + err.message.underline.red);
                 })
-                .pipe(sourcemaps.write('.', {
-                    includeContent : false,
-                    sourceRoot : 'sass/'
-                }))
+                .pipe(sourcemaps.write('.'))
                 // inline any files with extensions: svg#datauri, png#datauri, or jpg#datauri
                 .pipe(base64({
                     baseDir : 'html',
