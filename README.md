@@ -9,7 +9,6 @@ Used to create new projects using the [Perch CMS](https://grabaperch.com/) at XM
 3. Find and make changes near `@todo-perch` comments throughout the site. Especially important to do the one in `.gitignore` otherwise the private config may be committed to the repo.
 4. Make dev redirect change in `.htaccess` (search for `@todo`)
 5. Run `npm install`
-6. Run `bower install`
-7. Run Perch setup at: `/perch/setup`
-8. Delete the `/perch/setup` folder.
-9. Set the appropriate permissions on `/perch/resources` (if needed).
+6. Run Perch setup at: `/perch/setup`
+7. Delete the `/perch/setup` folder.
+8. Set the appropriate permissions on `/perch/resources` (if needed).
