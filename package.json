@@ -8,7 +8,6 @@
     "url": "https://github.com/xmmedia/starter_perch"
   },
   "license": "MIT",
-  "//": "@todo-perch",
   "//private": true,
   "devDependencies": {
     "colors": "~1.1.2",
