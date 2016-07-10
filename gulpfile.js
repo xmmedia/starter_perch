@@ -8,7 +8,20 @@ var gulp = require('gulp'),
     svgmin = require('gulp-svgmin'),
     size = require('gulp-size'),
     Q = require('q'),
-    colors = require('colors');
+    colors = require('colors'),
+    argv = require('yargs').argv,
+    gulpif = require('gulp-if');
+
+var scripts;
+if (argv.dev) {
+    scripts = {
+        'jquery' : 'node_modules/jquery/dist/jquery.js'
+    };
+} else {
+    scripts = {
+        'jquery' : 'node_modules/jquery/dist/jquery.min.js'
+    };
+}
 
 // paths & options used within the tasks
 var paths = {
@@ -18,7 +31,7 @@ var paths = {
             destFile : 'public.min.js',
             files :
                 [
-                    'html/bower_components/jquery/dist/jquery.js',
+                    scripts.jquery,
                     'html/js/src/common/svg_icons.js',
                     'html/js/src/public.js'
                 ]
@@ -58,7 +71,7 @@ gulp.task('scripts', function() {
                     console.log('   ' + 'Concat JS ERROR'.underline.red);
                     console.log('   ' + err.message.underline.red);
                 })
-                .pipe(uglify(uglify_options))
+                .pipe(gulpif(!argv.dev, uglify(uglify_options)))
                 .on('error', function (err) {
                     console.log('   ' + 'Uglify JS ERROR'.underline.red);
                     console.log('   Line ' + err.lineNumber + ': ' + err.message.underline.red);
@@ -104,10 +117,14 @@ gulp.task('styles', function() {
                     includeContent : false,
                     sourceRoot : 'sass/'
                 }))
-                // inline any files with extensions: svg, png#datauri, or jpg#datauri
+                // inline any files with extensions: svg#datauri, png#datauri, or jpg#datauri
                 .pipe(base64({
                     baseDir : 'html',
-                    extensions : ['svg', /\.png#datauri$/i, /\.jpg#datauri$/i],
+                    extensions : [
+                        /\.svg#datauri$/i,
+                        /\.png#datauri$/i,
+                        /\.jpg#datauri$/i
+                    ],
                     maxImageSize : 8*1024 // bytes
                 }))
                 .on('error', function (err) {
