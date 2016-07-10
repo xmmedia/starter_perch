@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/xmmedia/starter_perch"
   },
-  "license": "GPL-3.0",
+  "license": "MIT",
   "//": "@todo-perch",
   "//private": true,
   "devDependencies": {
