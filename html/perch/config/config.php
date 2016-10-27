@@ -20,6 +20,7 @@
     //define('PERCH_XHTML_MARKUP', false);
     define('PERCH_RWD', false);
     define('PERCH_SSL', true);
+    // see https://docs.grabaperch.com/docs/installing-perch/configuration/security/
     define('PERCH_PARANOID', true);
 
     define('PERCH_SCHEDULE_SECRET', '<secret>');
