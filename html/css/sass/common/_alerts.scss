@@ -1,12 +1,9 @@
 .alert {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 90%;
     min-width: 10rem;
     margin: 0 auto 1em;
     padding: 0.5em;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: $color-grey-light;
     border-left: 10px solid transparent;
     @include mq(tablets) {
         width: 70%;
@@ -16,16 +13,16 @@
     .form-form_wrap & { width: 100%; }
 }
 
-.alert--success {
+.alert-type-success {
     border-left-color: $status--success;
 }
-.alert--info {
+.alert-type-info {
     border-left-color: $status--info;
 }
-.alert--warning {
+.alert-type-warning {
     border-left-color: $status--warning;
 }
-.alert--danger {
+.alert-type-danger {
     border-left-color: $status--danger;
 }
 

@@ -1,68 +1,58 @@
 /** modal dialog **/
-.md-modal {
+.md-overlay {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 90%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.8);
+    transition: opacity .5s ease;
+}
+// -enter and -leave-active are added/created by Vue.js
+.md-enter {
+    opacity: 0;
+}
+.md-leave-active {
+    opacity: 0;
+}
+
+.md-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+// @todo does this will work; do we need it?
+.md-modal-scroll { overflow-y: scroll; }
+.md-content {
+    font-size: 1rem;
+    padding: 0.5em 1.2em;
+    background: #fff;
     max-width: 40em;
-    height: auto;
     max-height: 80%;
     overflow-y: hidden;
     z-index: 2000;
-    visibility: hidden;
+    transition: all .8s ease;
     backface-visibility: hidden;
-    transform: translateX(-50%) translateY(-50%);
+
     @include mq(wide_handhelds) {
         width: 50%;
         min-width: 320px;
     }
 }
-.md-modal-show { visibility: visible; }
-.md-overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    opacity: 0;
-    background: rgba(0,0,0,0.8);
-    transition: all 0.3s;
-}
-.md-modal-show ~ .md-overlay {
-    opacity: 1;
-    visibility: visible;
-}
-
-.md-modal-scroll { overflow-y: scroll; }
-.md-content {
-    padding: 0.5em 1.5em;
-    background: #fff;
-    /* Effect: Fade in and scale up */
-    .md-modal & {
-        transform: scale(0.7);
-        opacity: 0;
-        transition: all 0.3s;
-    }
-    .md-modal-show & {
-        transform: scale(1);
-        opacity: 1;
-    }
+// see note above re .md-enter
+.md-enter .md-content,
+.md-leave-active .md-content {
+    transform: scale(1.1);
 }
 .md-content-center { text-align: center; }
 
 .md-close {
-    display: block;
-    margin: 1em auto;
-}
-.md_close_x {
-    position: absolute;
-    top: 0.4em;
-    right: 1em;
-    display: block;
+    float: right;
     z-index: 2200;
-    font-size: 1.1rem;
+    font-size: 1.2em;
     color: $link-color;
     text-decoration: none;
 }

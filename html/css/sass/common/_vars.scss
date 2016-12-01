@@ -3,10 +3,12 @@ $max-width: 71.25em;
 $max-width-narrow: $max-width - 20;
 
 $color-white: rgb(255, 255, 255);
-$color-dark-grey: rgb(32, 36, 41);
+$color-grey-light: rgb(243, 243, 243);
+$color-grey-dark: rgb(32, 36, 41);
+$color-red: rgb(247, 81, 70);
 
 $text-color: #444;
-$link-color: rgb(1, 142, 66);
+$link-color: $color-red;
 $headings-color: $link-color;
 
 $border-radius: 2px;
@@ -16,7 +18,7 @@ $status--info: rgb(91, 192, 221);
 $status--warning: rgb(240, 173, 78);
 $status--danger: rgb(217, 82, 78);
 
-$pagination-link-hover: rgba(140, 195, 63, 0.4);
+$pagination-link-hover: rgba(32, 36, 41, 0.1);
 $pagination-current-border: rgba(32, 36, 41, 0.15);
 $pagination-item-inactive: lighten($text-color, 50%);
 
@@ -24,5 +26,9 @@ $mqs: (
     handhelds: 20em,
     wide_handhelds: 35em,
     tablets: 48em,
-    wide_tablets: 64em
+    wide_tablets: 64em,
+    // hero & image bars
+    hero_medium: 25em,
+    hero_large: 50em,
+    hero_extra_large: 68.75em
 );

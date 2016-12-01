@@ -1,22 +1,35 @@
 // mixins + normalize + common
-@import "common/vars", "public/vars", "common/mixins", "public/mixins", "common/media", "common/common";
+@import "common/vars",
+    "public/vars",
+    "common/mixins",
+    "public/mixins",
+    "common/media",
+    "common/common";
 
 // global styles on the most common elements
 html {
-    font: 100%/1 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    color: $text-color;
+    @include default-html-style;
 }
 
+a {
+    transition: color 0.25s ease;
+    &:hover { }
+}
+address { font-style: normal; }
+
 // load common styles
-@import "common/forms", "common/pagination", "common/alerts";
+@import "common/forms",
+    //"common/pagination",
+    //"common/alerts",
+    //"common/modal",
+    "common/ie8_warning";
 
 // public only styles
 @import "public/content",
     "public/buttons",
+    "public/headings",
     "public/header",
-    "public/footer",
-    "public/headings";
+    "public/footer";
 
 // page specific
 //@import ;

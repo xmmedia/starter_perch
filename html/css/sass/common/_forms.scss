@@ -1,4 +1,4 @@
-.input--align_right { text-align: right; }
+.form-input-align_right { text-align: right; }
 
 .form-form_wrap {
     width: 90%;
@@ -35,7 +35,7 @@
     @include text-input() {
         width: 100%;
         padding: 0.5em;
-        border: 1px solid rgba($color-dark-grey, 0.15);
+        border: 1px solid rgba($color-grey-dark, 0.15);
         border-radius: $border-radius;
         background-color: rgba(255, 255, 255, 0.9);
     }
@@ -46,6 +46,13 @@
     @include text-input() {
         width: auto;
     }
+}
+// fixes space below textareas, making it consistent across browsers
+textarea {
+    vertical-align: top;
+}
+.form-field_wrap-textarea {
+    textarea { height: 10em; }
 }
 
 .form-field-flex {
@@ -87,6 +94,10 @@
     color: lighten($text-color, 17%);
     font-style: italic;
 }
+// for help by buttons
+.form-field_help-button {
+    margin-top: 0.25em;
+}
 
 .form-button_wrap {
     button, .button { margin-right: 0.5em; }
@@ -105,20 +116,8 @@
     padding-left: 0;
     li {
         padding: 0.5em;
-        // @todo should this be a variable
-        background: #fafafa;
+        background: $color-grey-light;
         border-left: 10px solid $status--danger;
-        // @todo seems like we don't need the "px"
-        border-width: 0px 0px 0px 10px;
+        border-width: 0 0 0 10px;
     }
-}
-
-// @todo - not sure if this is where this goes and probably needs to be renamed
-.record_actions {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    width: 20em;
-    margin: 0 auto;
 }

@@ -6,7 +6,7 @@
 @import "normalize";
 
 input[type=radio], input[type=checkbox] { margin-right: 0.3em; }
-// make sure everything should h
+// make sure everything shows a pointer on hover
 a[href], input[type='submit'], input[type='image'], label[for], select, button {
     cursor: pointer;
 }
@@ -29,6 +29,8 @@ h1, h2, h3 {
     }
 }
 
-.--no_top_margin { margin-top: 0; }
-.--no_margin { margin: 0; }
-.hidden { display: none; }
+.-margin-no_top { margin-top: 0; }
+.-margin-no_margin { margin: 0; }
+.-display-hidden { display: none; }
+.-link-no_underline { text-decoration: none; }
+.-text-center { text-align: center; }
