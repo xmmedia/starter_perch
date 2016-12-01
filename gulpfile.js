@@ -7,134 +7,103 @@ var gulp = require('gulp'),
     base64 = require('gulp-base64'),
     svgmin = require('gulp-svgmin'),
     size = require('gulp-size'),
-    Q = require('q'),
     colors = require('colors'),
     argv = require('yargs').argv,
-    gulpif = require('gulp-if');
+    rename = require('gulp-rename'),
+    gutil = require('gulp-util'),
+    webpack = require('webpack'),
+    merge = require('merge-stream');
 
-var scripts;
+var firstRun = true,
+    webpackConfig = require('./webpack.config'),
+    stylesConfig;
+
 if (argv.dev) {
-    scripts = {
-        'jquery' : 'node_modules/jquery/dist/jquery.js'
-    };
+    // note: this produces very large JS files on dev
+    webpackConfig.devtool = 'eval-inline-source-map';
+    // webpackConfig.debug = true;
+
 } else {
-    scripts = {
-        'jquery' : 'node_modules/jquery/dist/jquery.min.js'
-    };
+    webpackConfig.plugins.unshift(
+        new webpack.DefinePlugin({
+            'process.env': {
+                // This has effect on the lib size
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.DedupePlugin()
+    );
 }
 
-// paths & options used within the tasks
-var paths = {
-    scripts : [
-        {
-            dest : 'html/js',
-            destFile : 'public.min.js',
-            files :
-                [
-                    scripts.jquery,
-                    'html/js/src/common/svg_icons.js',
-                    'html/js/src/public.js'
-                ]
+// SCSS/CSS/style settings
+stylesConfig = [
+    {
+        src : 'html/css/sass/*.scss',
+        dest : 'html/css',
+        options : {
+            outputStyle : 'compressed'
         }
-    ],
-    styles : [
-        {
-            src : 'html/css/sass/*.scss',
-            dest : 'html/css',
-            options : {
-                outputStyle : 'compressed'
-            }
+    }
+];
+
+// Webpack/scripts
+gulp.task('webpack', function(callback) {
+    return webpack(webpackConfig, function(err, stats) {
+        if(err) throw new gutil.PluginError('webpack:build', err);
+
+        gutil.log('[webpack]', stats.toString({
+            colors: true
+        }));
+
+        if (firstRun) {
+            firstRun = false;
+            callback();
         }
-    ]
-};
-
-// Scripts
-gulp.task('scripts', function() {
-    var deferred = Q.defer();
-
-    setTimeout(function() {
-        var script, uglify_options;
-        for (var key in paths.scripts) {
-            script = paths.scripts[key];
-
-            uglify_options = {
-                mangle : true
-            };
-            for (var _key in script.uglify_options) {
-                uglify_options[_key] = script.uglify_options[_key];
-            }
-
-            gulp.src(script.files)
-                .pipe(sourcemaps.init())
-                .pipe(concat(script.destFile))
-                .on('error', function (err) {
-                    console.log('   ' + 'Concat JS ERROR'.underline.red);
-                    console.log('   ' + err.message.underline.red);
-                })
-                .pipe(gulpif(!argv.dev, uglify(uglify_options)))
-                .on('error', function (err) {
-                    console.log('   ' + 'Uglify JS ERROR'.underline.red);
-                    console.log('   Line ' + err.lineNumber + ': ' + err.message.underline.red);
-                })
-                .pipe(sourcemaps.write('.'))
-                .pipe(size({
-                    showFiles: true
-                }))
-                .pipe(gulp.dest(script.dest));
-        }
-
-        deferred.resolve();
-    }, 1);
-
-    return deferred.promise;
+    });
 });
 
 // Styles
 gulp.task('styles', function() {
-    var deferred = Q.defer();
+    var stream = new merge();
 
-    setTimeout(function() {
-        var style;
-        for (var key in paths.styles) {
-            style = paths.styles[key];
+    var style;
+    for (var key in stylesConfig) {
+        style = stylesConfig[key];
 
-            gulp.src(style.src)
-                .pipe(sourcemaps.init())
-                .pipe(sass(style.options))
-                .on('error', function (err) {
-                    console.log('   ' + 'SASS ERROR'.underline.red);
-                    console.log('   ' + err.message.underline.red);
-                })
-                .pipe(autoprefixer())
-                .on('error', function (err) {
-                    console.log('   ' + 'Autoprefixer ERROR'.underline.red);
-                    console.log('   ' + err.message.underline.red);
-                })
-                .pipe(sourcemaps.write('.'))
-                // inline any files with extensions: svg#datauri, png#datauri, or jpg#datauri
-                .pipe(base64({
-                    baseDir : 'html',
-                    extensions : [
-                        /\.svg#datauri$/i,
-                        /\.png#datauri$/i,
-                        /\.jpg#datauri$/i
-                    ],
-                    maxImageSize : 8*1024 // bytes
-                }))
-                .on('error', function (err) {
-                    console.log('   ' + 'Base64 ERROR'.underline.red);
-                    console.log('   ' + err.message.underline.red);
-                })
-                .pipe(size({
-                    showFiles: true
-                }))
-                .pipe(gulp.dest(style.dest));
-        }
+        stream.add(gulp.src(style.src)
+            .pipe(sourcemaps.init())
+            .pipe(sass(style.options))
+            .on('error', function (err) {
+                console.log('   ' + 'SASS ERROR'.underline.red);
+                console.log('   ' + err.message.underline.red);
+            })
+            .pipe(autoprefixer())
+            .on('error', function (err) {
+                console.log('   ' + 'Autoprefixer ERROR'.underline.red);
+                console.log('   ' + err.message.underline.red);
+            })
+            .pipe(sourcemaps.write('.'))
+            // inline any files with extensions: svg#datauri, png#datauri, or jpg#datauri
+            .pipe(base64({
+                baseDir : 'html',
+                extensions : [
+                    /\.svg#datauri$/i,
+                    /\.png#datauri$/i,
+                    /\.jpg#datauri$/i
+                ],
+                maxImageSize : 8*1024 // bytes
+            }))
+            .on('error', function (err) {
+                console.log('   ' + 'Base64 ERROR'.underline.red);
+                console.log('   ' + err.message.underline.red);
+            })
+            .pipe(size({
+                showFiles: true
+            }))
+            .pipe(gulp.dest(style.dest)));
+    }
 
-        deferred.resolve();
-    }, 1);
-
-    return deferred.promise;
+    return stream;
 });
 
 // SVGs
@@ -144,13 +113,27 @@ gulp.task('svgs', function() {
         .pipe(gulp.dest('html/images'));
 });
 
+// copy files into place as needed
+// gulp.task('copyfiles', function() {
+//     var stream = new merge();
+//
+//     Flatpickr
+//     stream.add(gulp.src('./node_modules/flatpickr/dist/flatpickr.min.css')
+//         .pipe(rename('flatpickr.scss'))
+//         .pipe(gulp.dest('./html/css/sass/lib/flatpickr')));
+//
+//     return stream;
+// });
+
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-    // watch everything in the JS dirs & sub dirs with extension .js, but exclude the .min.js files
-    gulp.watch(['html/js/src/**/*.js'], ['scripts']);
-    // watch everything in the sass dirs & sub dirs with extension .scss
-    gulp.watch(['html/css/sass/**/*.scss'], ['styles']);
+    // set webpack to watch
+    webpackConfig.watch = true;
+    gulp.start('webpack');
+
+    // watch everything in the sass dirs & sub dirs with extension .scss, but exclude the lib dir
+    gulp.watch(['html/css/sass/**/*.scss', '!html/css/sass/lib/**/*.scss'], ['styles']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('default', ['webpack', 'styles']);

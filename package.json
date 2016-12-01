@@ -10,19 +10,35 @@
   "license": "MIT",
   "//private": true,
   "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-register": "^6.0.0",
+    "babel-runtime": "^6.0.0",
     "colors": "~1.1.2",
-    "gulp": "~3.9.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "~3.1.0",
     "gulp-base64": "~0.1.3",
     "gulp-concat-sourcemap": "~1.3.1",
-    "gulp-if": "^2.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "~2.3.0",
     "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "~1.6.0",
+    "gulp-sourcemaps": "~2.2.0",
     "gulp-svgmin": "~1.2.1",
     "gulp-uglify": "~2.0.0",
-    "jquery": "^3.1.0",
-    "q": "~1.4.1",
-    "yargs": "^4.7.1"
+    "gulp-util": "^3.0.7",
+    "json-loader": "^0.5.4",
+    "merge-stream": "^1.0.0",
+    "vue": "^2.0.1",
+    "vue-resource": "^1.0.3",
+    "webpack": "^1.13.2",
+    "webpack-stream": "^3.2.0",
+    "yargs": "^6.0.0"
+  },
+  "scripts": {
+    "watch": "gulp watch --dev",
+    "build:js": "gulp webpack --dev",
+    "build:css": "gulp styles --dev"
   }
 }
