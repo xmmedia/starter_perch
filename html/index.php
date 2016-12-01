@@ -7,9 +7,11 @@
 ]); ?>
 
 <body>
-    <?php perch_layout('public.header'); ?>
+    <div id="app">
+        <?php perch_layout('public.header'); ?>
 
-    <?php perch_layout('public.footer'); ?>
+        <?php perch_layout('public.footer'); ?>
+    </div>
 
     <?php perch_layout('public.javascript'); ?>
 </body>
