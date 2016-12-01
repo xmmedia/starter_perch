@@ -7,6 +7,8 @@
 ]); ?>
 
 <body>
+	<?php perch_layout('public.ie8_warning'); ?>
+	
     <div id="app">
         <?php perch_layout('public.header'); ?>
 
