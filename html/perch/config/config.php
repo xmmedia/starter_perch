@@ -26,9 +26,9 @@
     define('PERCH_SCHEDULE_SECRET', '<secret>');
 
     define('PERCH_EMAIL_METHOD', 'smtp');
-    define('PERCH_EMAIL_HOST', 'smtp.mandrillapp.com');
+    define('PERCH_EMAIL_HOST', 'smtp.sparkpostmail.com');
     define('PERCH_EMAIL_AUTH', true);
-    define('PERCH_EMAIL_SECURE', '');
+    define('PERCH_EMAIL_SECURE', 'tls');
     define('PERCH_EMAIL_PORT', 587);
 
     require_once('config_private.php');
