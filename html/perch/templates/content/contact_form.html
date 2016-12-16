@@ -9,13 +9,17 @@
     <div class="form-field_wrap">
         <perch:label for="name">Name</perch:label>
         <perch:input type="text" id="name" required="true" label="Name" size="30" maxlength="100" />
-        <perch:error for="name" type="required">Please enter your name</perch:error>
+        <perch:error for="name" type="required">
+            <div class="alert alert-type-danger">Please enter your name</div>
+        </perch:error>
     </div>
     <div class="form-field_wrap">
         <perch:label for="email">Email</perch:label>
         <perch:input type="email" id="email" required="true" label="Email" placeholder="you@example.com"  size="30" maxlength="100" />
         <perch:error for="email" type="required">Please add your email address</perch:error>
-        <perch:error for="email" type="format">Please check your email address</perch:error>
+       <perch:error for="email" type="format">
+            <div class="alert alert-type-danger">Please check your email address</div>
+        </perch:error>
     </div>
     <div class="form-field_wrap">
         <perch:label for="phone">Phone</perch:label>
@@ -24,7 +28,9 @@
     <div class="form-field_wrap form-field_wrap-textarea">
         <perch:label for="message">Message</perch:label>
         <perch:input type="textarea" id="message" required="true" label="Message" />
-        <perch:error for="message" type="required">Please add a message</perch:error>
+        <perch:error for="message" type="required">
+            <div class="alert alert-type-danger">Please add a message</div>
+        </perch:error>
     </div>
 
     <perch:input type="cms" />
