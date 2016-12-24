@@ -5,7 +5,7 @@ export default {
         <div class="md-overlay" @click.self="$emit('close')">
             <div class="md-modal">
                 <div class="md-content">
-                    <a href="" class="md-close" @click.prevent="$emit('close')">x</a>
+                    <a href="" class="md-close" @click.prevent="$emit('close')">×</a>
                     <div>
                         <slot name="content"></slot>
                     </div>
