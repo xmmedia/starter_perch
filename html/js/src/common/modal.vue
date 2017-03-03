@@ -1,7 +1,6 @@
-// based off of Vue.js's example modal: https://vuejs.org/examples/modal.html
-export default {
-    template:
-    `<transition name="md">
+<!-- based off of Vue.js's example modal: https://vuejs.org/examples/modal.html -->
+<template>
+    <transition name="md">
         <div class="md-overlay" @click.self="$emit('close')">
             <div class="md-modal">
                 <div class="md-content">
@@ -15,5 +14,5 @@ export default {
                 </div>
             </div>
         </div>
-    </transition>`
-}
+    </transition>
+</template>
