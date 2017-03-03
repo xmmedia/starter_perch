@@ -7,8 +7,6 @@ sftp-config.json
 .remote-sync.json
 .sass-cache
 node_modules
-html/css/*
-!html/css/sass
 html/perch/resources
 # @todo-perch uncomment
 # html/perch/config/config_private.php
