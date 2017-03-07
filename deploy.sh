@@ -8,5 +8,5 @@ echo "-- Deploy Setup"
 . ./node_setup.sh || exit 1
 echo "-- npm install"
 npm install || exit 1
-echo "-- Run Gulp"
-gulp || exit 1
+echo "-- Run webpack"
+npm run build || exit 1
