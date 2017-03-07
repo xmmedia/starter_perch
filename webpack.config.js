@@ -4,10 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        public : [
-            'babel-polyfill',
-            './html/js/src/public.js'
-        ]
+        public : './html/js/src/public.js'
     },
     output: {
         path: path.resolve(__dirname, './html'),
