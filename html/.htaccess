@@ -422,7 +422,7 @@ AddDefaultCharset utf-8
 # </IfModule>
 
 # ----------------------------------------------------------------------
-# | Allow accessing PHP files with .php                                |
+# | Allow accessing PHP files without .php                                |
 # ----------------------------------------------------------------------
 
 # Note: you can't have a file named the same as a directory.
@@ -432,7 +432,7 @@ AddDefaultCharset utf-8
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.php -f
-    RewriteRule ^(.+)$ $1.php [L,QSA]
+    RewriteRule ^([a-z0-9\-\/]+)$ $1.php [L,QSA]
 </IfModule>
 
 
