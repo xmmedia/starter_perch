@@ -1,6 +1,9 @@
-<perch:form id="contact" method="post" app="perch_forms" accept-charset="utf-8">
+<div class="anchor" id="sent"></div>
+<perch:form id="contact" method="post" action="#sent" app="perch_forms" accept-charset="utf-8">
     <perch:success show-form="false">
-         <div class="alert alert-type-success"><perch:content id="thankyou" label="Success message" type="textarea" textile="true" editor="markitup" /></div>
+         <div class="alert alert-type-success">
+             <perch:content id="thankyou" label="Success message" type="textarea" textile="true" editor="markitup" />
+         </div>
     </perch:success>
     <perch:error for="all" type="general">
         Looks like something isn't quite right. Please see the messages below.
@@ -15,15 +18,17 @@
     </div>
     <div class="form-field_wrap">
         <perch:label for="email">Email</perch:label>
-        <perch:error for="email" type="required">Please add your email address</perch:error>
+        <perch:error for="email" type="required">
+            <div class="alert alert-type-danger">Please add your email address</div>
+        </perch:error>
         <perch:error for="email" type="format">
             <div class="alert alert-type-danger">Please check your email address</div>
         </perch:error>
-        <perch:input type="email" id="email" required="true" label="Email" placeholder="you@example.com"  size="30" maxlength="100" />
+        <perch:input type="email" id="email" required="true" label="Email" placeholder="Required – you@example.com" size="30" maxlength="100" />
     </div>
     <div class="form-field_wrap">
         <perch:label for="phone">Phone</perch:label>
-        <perch:input type="phone" id="phone" label="Phone" placeholder="403-222-3333" size="15" maxlength="15" />
+        <perch:input type="phone" id="phone" label="Phone" placeholder="Optional – 403-222-3333" size="15" maxlength="15" />
     </div>
     <div class="form-field_wrap form-field_wrap-textarea">
         <perch:label for="message">Message</perch:label>
@@ -33,9 +38,8 @@
         <perch:input type="textarea" id="message" required="true" label="Message" />
     </div>
 
+    <perch:input type="cms" />
     <div class="form-button_wrap">
         <button>Send</button>
     </div>
-
-    <perch:input type="cms" />
 </perch:form>
