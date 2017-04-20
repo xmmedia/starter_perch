@@ -414,6 +414,7 @@ AddDefaultCharset utf-8
 
 # Redirect from the `http://` to the `https://` version of the URL.
 # https://wiki.apache.org/httpd/RewriteHTTPToHTTPS
+# @todo-perch enable once SSL is setup
 
 # <IfModule mod_rewrite.c>
 #    RewriteEngine On
