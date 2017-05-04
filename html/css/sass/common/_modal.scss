@@ -9,11 +9,11 @@
     background: rgba(0,0,0,0.8);
     transition: opacity .5s ease;
 }
-// -enter and -leave-active are added/created by Vue.js
+// -enter and -leave-to are added/created by Vue.js
 .md-enter {
     opacity: 0;
 }
-.md-leave-active {
+.md-leave-to {
     opacity: 0;
 }
 

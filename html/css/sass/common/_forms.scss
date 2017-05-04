@@ -1,3 +1,11 @@
+// this var is here because we need the text colour var first
+$form-label-color-hover: lighten($text-color, 20%);
+
+// fixes space below textareas, making it consistent across browsers
+textarea {
+    vertical-align: top;
+}
+
 .form-input-align_right { text-align: right; }
 
 .form-form_wrap {
@@ -26,11 +34,15 @@
     }
 }
 
-.form-field_wrap {
+.form-field-flex {
+    @include flex-row_wrap;
+}
+
+.form-field_wrap, .form_table-col {
     margin-bottom: 1em;
     label {
         display: block;
-        margin-bottom: 0.25em;
+        margin-bottom: $form-space-separator;
     }
     @include text-input() {
         width: 100%;
@@ -41,38 +53,69 @@
     }
     input[type=file] { width: 100%; }
 }
-
 .form-field_wrap-no_width {
     @include text-input() {
         width: auto;
     }
 }
-// fixes space below textareas, making it consistent across browsers
-textarea {
-    vertical-align: top;
+.form-field_wrap-no_margin {
+    margin-bottom: 0;
 }
 .form-field_wrap-textarea {
     textarea { height: 10em; }
 }
-
-.form-field-flex {
-    @include flex-row_wrap;
-}
-// for non-text elements
-.form-field_wrap-label_inline {
+.form-field_wrap-checkbox {
     label {
         display: inline-block;
         margin-right: 1em;
         margin-bottom: 0;
-        &:hover { color: lighten($text-color, 20%); }
+        &:hover { color: $form-label-color-hover; }
     }
 }
-
+.form-field_wrap-radio_row {
+    > label:first-of-type {
+        display: block;
+        margin-bottom: $form-space-separator;
+    }
+    label {
+        display: inline-block;
+        margin-right: 1em;
+        margin-bottom: 0;
+    }
+}
+.form-field_wrap-flex_horz {
+    display: flex;
+    align-items: center;
+}
 // for text elements
 .form-field_wrap-flex {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+}
+.form-field_wrap-readonly {
+    position: relative;
+
+    @include text-input {
+        opacity: 0.4;
+    }
+
+    &:after {
+        position: absolute;
+        top: 0.5em;
+        right: 0;
+        font-size: 0.7em;
+        opacity: 0.5;
+        content: "read-only";
+    }
+}
+
+// for use inside of a field_wrap for multiple fields shown vertically
+.form-vertical_list > div {
+    label {
+        display: inline-block;
+        &:hover { color: $form-label-color-hover; }
+    }
 }
 
 .form-field_prefix {
@@ -80,9 +123,11 @@ textarea {
     margin-right: 0.5em;
     label { margin-bottom: 0; }
 }
-
+.form-field_horz_separator {
+    padding: 0 0.25em;
+}
 .form-field_suffix {
-    margin-left: 0.25em;
+    margin-left: $form-space-separator;
     flex: 0 0 auto;
 }
 
@@ -96,7 +141,7 @@ textarea {
 }
 // for help by buttons
 .form-field_help-button {
-    margin-top: 0.25em;
+    margin-top: $form-space-separator;
 }
 
 .form-button_wrap {
@@ -112,12 +157,18 @@ textarea {
 
 .form-field_errors {
     list-style: none;
-    margin: 0 0 0.25em;
+    margin: 0 0 $form-space-separator;
     padding-left: 0;
     li {
+        margin-bottom: $form-space-separator;
         padding: 0.5em;
         background: $color-grey-light;
-        border-left: 10px solid $status--danger;
+        border-left: 10px solid $status-type-danger;
         border-width: 0 0 0 10px;
     }
+}
+
+// for the labels within the vich file uploader widget
+.vich-file label {
+    margin-top: $form-space-separator;
 }

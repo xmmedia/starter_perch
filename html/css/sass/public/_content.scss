@@ -5,7 +5,7 @@
     padding: 1em;
 
     &-narrow {
-        max-width: 40em;
+        max-width: $max-content-width;
     }
 }
 

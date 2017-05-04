@@ -10,7 +10,7 @@
     display: none;
     width: 3.25em;
     padding: 0.25em 0.15em;
-    color: $pagination-item-inactive;
+    color: lighten($text-color, 50%);
     @include mq(54em) {
         display: inline-block;
     }

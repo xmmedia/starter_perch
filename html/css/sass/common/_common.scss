@@ -16,7 +16,7 @@ img, object, embed { max-width: 100%; }
 img { height: auto; }
 
 // make anchors that are inside headers look like the header, but underline when hovered
-h1, h2, h3 {
+h1, h2, h3, h4 {
     &:not(.heading-keep_margin):first-child { margin-top: 0; }
 
     a {
