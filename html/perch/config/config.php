@@ -2,7 +2,7 @@
     // @todo-perch
     define('PERCH_LICENSE_KEY', '');
 
-    define('PERCH_DB_PREFIX', 'perch2_');
+    define('PERCH_DB_PREFIX', 'perch3_');
 
     define('PERCH_TZ', 'America/Edmonton');
 
