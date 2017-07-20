@@ -1,0 +1,1 @@
+<svg-icons src="<?php Common::version_file('/images/icons-public.svg'); ?>"></svg-icons>

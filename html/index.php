@@ -10,6 +10,7 @@
 	<?php perch_layout('public.ie8_warning'); ?>
 
     <div id="app">
+        <?php perch_layout('public.icons'); ?>
         <?php perch_layout('public.header'); ?>
 
         <?php perch_layout('public.footer'); ?>
