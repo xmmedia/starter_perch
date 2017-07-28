@@ -1,4 +1,6 @@
 .alert {
+    display: flex;
+    justify-content: space-between;
     width: 90%;
     min-width: 10rem;
     margin: 0 auto 1em;
@@ -26,12 +28,9 @@
     border-left-color: $status-type-danger;
 }
 
-// @todo implement dismiss message (JS)
-//.alert-action {
-//    // for <=IE9
-//    float: right;
-//    padding-left: 1em;
-//    font-size: 0.8em;
-//    color: rgba($link-color, 0.5);
-//    &:hover { color: rgba($link-color, 1); }
-//}
+// no generic JS implemented to make the message disappear
+.alert-action-right {
+    // for <=IE9
+    float: right;
+    padding-left: 1em;
+}

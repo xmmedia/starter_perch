@@ -1,0 +1,54 @@
+.button-pair {
+    display: inline-block;
+    font-size: 0.8em;
+    // the top margin is so these links line up with main link
+    // the negative margin is to bring the boxes closer together, so they overlap
+    margin: 0 -0.22em;
+    padding: 0.5em 1.2em;
+    color: $admin-header-action;
+    border: 1px solid rgba($admin-header-action, 0.5);
+    border-radius: 3px;
+    transition: background-color 0.15s ease-in-out;
+    @include mq(tablets) { margin-top: 1em; }
+    &:hover {
+        background-color: $admin-header-action-hover;
+        border-color: rgba($admin-header-action, 0.9);
+        text-decoration: none;
+    }
+}
+
+.button_pair-left {
+    margin-left: 0.5em;
+    border-radius: 3px 0 0 3px;
+}
+
+.button_pair-right {
+    margin-right: 0;
+    border-left-color: rgba($admin-header-action, 0.4);
+    border-radius: 0 3px 3px 0;
+    &:hover {
+        border-left-color: rgba($admin-header-action, 0.9);
+    }
+}
+
+.button_pair-right-inactive,
+.button_pair-left-inactive {
+    color: $admin-header-inactive;
+    border-color: $admin-header-inactive;
+    &:hover {
+        background-color: transparent;
+        color: $admin-header-inactive;
+        border-color: $admin-header-inactive;
+    }
+}
+
+.button_pair-left-inactive ~ .button_pair-right-inactive {
+     border-left: none;
+}
+
+.button_pair-right-inactive {
+    border-radius: 0 3px 3px 0;
+}
+.button_pair-left-inactive {
+    border-radius: 3px 0 0 3px;
+}

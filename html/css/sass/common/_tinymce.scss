@@ -1,0 +1,2 @@
+// for tinymce as it doesn't seem to layout properly when border-box
+.mce-container, .mce-container *, .moxman-container, .moxman-container * { box-sizing: content-box; }

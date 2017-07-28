@@ -1,0 +1,13 @@
+// these are "icons" because they are fills for SVGs
+// it's unlikely there'd be a need to use these for other SVGs as they'll likely be multicoloured
+// this also leaves room to add a general .icon class
+
+.icon-green {
+    fill: green;
+}
+.icon-red {
+    fill: red;
+}
+.icon-grey {
+    fill: lightgrey;
+}
