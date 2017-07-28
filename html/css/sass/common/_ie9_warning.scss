@@ -1,7 +1,7 @@
-.ie8_warning-wrap {
+.ie9_warning-wrap {
     background: $status-type-danger;
 }
-.ie8_warning-content {
+.ie9_warning-content {
     // ~70 chars
     max-width: 35em;
     margin: 0 auto;
@@ -9,10 +9,10 @@
     color: #fff;
     text-align: center;
 }
-.ie8_warning-content-big {
+.ie9_warning-content-big {
     font-size: 1.2em;
 }
-.ie8_warning-link {
+.ie9_warning-link {
     color: #fff;
     &:hover {
         color: #ddd;
