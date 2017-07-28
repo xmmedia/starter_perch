@@ -29,5 +29,5 @@ PerchSystem::set_var('twitter_name', $twitter_name);
 
     <?php perch_page_attributes(); ?>
 
-    <link href="<?php Common::version_file('/css/public.css'); ?>" rel="stylesheet">
+    <link href="<?php Common::version_file('build/public.css'); ?>" rel="stylesheet">
 </head>
