@@ -1,6 +1,11 @@
 <?php
 
 // setup some default page perch vars/attributes
+$page_title = perch_layout_var('title', true);
+if (empty($page_title)) {
+    $page_title = perch_page_title(true);
+}
+
 $domain        = 'https://'.$_SERVER["HTTP_HOST"];
 $url           = $domain.$_SERVER["REQUEST_URI"];
 // @todo-perch
@@ -20,7 +25,7 @@ PerchSystem::set_var('twitter_name', $twitter_name);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php perch_layout_var('title'); ?></title>
+    <title><?php Common::e($page_title); ?></title>
 
     <?php perch_page_attributes(); ?>
 
