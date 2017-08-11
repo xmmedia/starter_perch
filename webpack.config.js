@@ -14,7 +14,10 @@ Encore
     .addEntry('public', './html/js/src/public.js')
 
     // allow sass/scss files to be processed
-    .enableSassLoader()
+    .enableSassLoader(function(sassOptions) {}, {
+        // see: http://symfony.com/doc/current/frontend/encore/bootstrap.html#importing-bootstrap-sass
+        resolve_url_loader: false
+    })
     .enablePostCssLoader()
     // allow .vue files to be processed
     .enableVueLoader()
