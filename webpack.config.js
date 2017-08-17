@@ -33,6 +33,11 @@ let config = Encore.getWebpackConfig();
 
 config.resolve.alias['vue$'] = 'vue/dist/vue.common.js';
 
+// See: https://github.com/symfony/webpack-encore/blob/master/lib/config-generator.js#L223
+// See: https://webpack.js.org/configuration/stats/
+config.stats.assets = true;
+config.stats.source = true;
+
 if (Encore.isProduction()) {
     config.devtool = 'source-map';
 }
