@@ -31,4 +31,6 @@
     define('PERCH_EMAIL_SECURE', 'tls');
     define('PERCH_EMAIL_PORT', 587);
 
+    session_save_path(realpath(__DIR__.'/../../../sessions'));
+
     require_once('config_private.php');
