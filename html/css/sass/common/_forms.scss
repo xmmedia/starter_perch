@@ -1,34 +1,15 @@
 $form-label-color-hover: lighten($text-color, 20%);
 $form-border-color: rgba(0, 0, 0, 0.1);
 
-// fixes space below textareas, making it consistent across browsers
-textarea {
-    vertical-align: top;
-}
-
-.form-input-align_right { text-align: right; }
-
-.form-form_wrap {
-    width: 90%;
-    max-width: 30em;
+.form-wrap {
+    // @todo complete conversion
+    @apply w-9/10 max-w-sm;
+    //width: 90%;
+    //max-width: 30em;
     margin: 1em auto;
     padding: 1em;
     border-radius: $border-radius;
     box-shadow: 0 5px 10px $form-border-color;
-    h2 { margin-top: 0; }
-    h4 { margin-bottom: 0.5em; }
-}
-
-.form-fieldset {
-    margin: 1.5em 0 1em;
-    padding: 1em 1em;
-    border: 1px solid $form-border-color;
-    > .form-field_wrap:last-of-type {
-        margin-bottom: 0.5em;
-    }
-}
-.form-fieldset-first {
-    margin-top: 0.5em;
 }
 
 @mixin text-input() {
@@ -37,14 +18,10 @@ textarea {
     }
 }
 
-.form-field-flex {
-    @include flex-row_wrap;
-}
-
 .form-field_wrap {
     select {
+        @apply p-2;
         height: 2.3em;
-        padding: 0.5em;
     }
 }
 
@@ -67,9 +44,6 @@ textarea {
     @include text-input() {
         width: auto;
     }
-}
-.form-field_wrap-no_margin {
-    margin-bottom: 0;
 }
 .form-field_wrap-textarea {
     textarea { height: 10em; }
