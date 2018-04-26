@@ -33,6 +33,7 @@
     "postcss-loader": "^2.0.6",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "tailwindcss": "^0.5.2",
     "vue": "^2.4.2",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.4.2",

@@ -1,3 +1,7 @@
+@tailwind preflight;
+
+@tailwind components;
+
 // mixins + normalize + common
 @import "common/vars",
     "public/vars",
@@ -33,3 +37,5 @@ address { font-style: normal; }
 
 // page specific
 //@import ;
+
+@tailwind utilities;
