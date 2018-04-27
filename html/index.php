@@ -3,7 +3,7 @@
 <?php perch_layout('public.head'); ?>
 
 <body>
-	<?php perch_layout('public.ie8_warning'); ?>
+    <?php perch_layout('public.ie9_warning'); ?>
 
     <div id="app">
         <?php perch_layout('public.icons'); ?>
