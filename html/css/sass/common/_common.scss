@@ -1,11 +1,19 @@
 /* this file is for public and private/admin pages */
 
-[type=radio], [type=checkbox] { margin-right: 0.3em; }
+[type=radio], [type=checkbox] {
+    @apply mr-1;
+}
 // make sure everything shows a pointer on hover
 [type=submit], [type=image], label[for], select {
-    cursor: pointer;
+    @apply cursor-pointer;
 }
-td { vertical-align: top; }
+td {
+    @apply align-top;
+}
+// fixes space below textareas, making it consistent across browsers
+textarea {
+    @apply align-top;
+}
 
 // @todo needed?
 //img { height: auto; }
@@ -13,16 +21,11 @@ td { vertical-align: top; }
 // make anchors that are inside headers look like the header, but underline when hovered
 h1, h2, h3, h4 {
     a {
-        @apply .no-underline;
+        @apply no-underline;
         color: inherit;
         &:hover, &:active {
             @apply underline;
             color: inherit;
         }
     }
-}
-
-// fixes space below textareas, making it consistent across browsers
-textarea {
-    vertical-align: top;
 }

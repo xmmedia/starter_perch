@@ -1,22 +1,3 @@
-// from http://www.sitepoint.com/using-sass-maps/
-//@mixin mq($breakpoint) {
-//    @if map-has-key($mqs, $breakpoint) {
-//        @media (min-width: #{map-get($mqs, $breakpoint)}) { @content; }
-//    }
-//    @else {
-//        @media (min-width: $breakpoint) { @content }
-//    }
-//}
-
-//@mixin mq_max($breakpoint) {
-//    @if map-has-key($mqs, $breakpoint) {
-//        @media (max-width: #{map-get($mqs, $breakpoint)}) { @content; }
-//    }
-//    @else {
-//        @media (max-width: $breakpoint) { @content }
-//    }
-//}
-
 // @todo move to tailwind.js?
 @mixin mq_retina() {
     @media

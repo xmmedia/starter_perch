@@ -2,7 +2,7 @@
 
 @tailwind components;
 
-// mixins + normalize + common
+// @todo rename to base?
 @import "common/common";
 
 // global styles on the most common elements
@@ -10,17 +10,19 @@ html {
     @apply font-sans leading-normal text-black;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    @apply .leading-tight;
+}
 // re-add margin to p as it's reset in tailwind's normalize
 p {
-    @apply my-4;
+    @apply .my-4;
 }
-
 a {
     transition: color 0.25s ease;
     &:hover { }
 }
 address {
-    @apply roman;
+    @apply .roman;
 }
 //
 //// load common styles
@@ -31,11 +33,7 @@ address {
 //    "common/ie9_warning";
 //
 //// public only styles
-//@import "public/content",
-//    "public/buttons",
-//    "public/headings",
-//    "public/header",
-//    "public/footer";
+@import "public/header";
 
 // page specific
 //@import ;
