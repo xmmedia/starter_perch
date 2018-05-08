@@ -1,5 +1,5 @@
 .alert {
-    @apply flex justify-between w-4/5 mt-0 mx-auto mb-1 p-2 bg-grey border-l-10;
+    @apply flex justify-between w-4/5 mt-0 mx-auto mb-1 p-2 bg-grey-lighter border-l-10;
 
     // alerts nested inside forms should go the full width
     .form-wrap & {
