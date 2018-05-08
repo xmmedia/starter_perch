@@ -1,6 +1,5 @@
 .form-wrap {
-    @apply w-9/10 max-w-sm mx-auto my-4 p-4 rounded-sm;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    @apply w-9/10 max-w-sm mx-auto my-4 p-4 rounded-sm shadow-md;
 }
 
 @mixin text-input() {
