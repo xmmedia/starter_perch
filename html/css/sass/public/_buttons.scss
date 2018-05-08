@@ -3,5 +3,5 @@ button, .button {
 }
 
 .button {
-    display: inline-block;
+    @apply .inline-block;
 }

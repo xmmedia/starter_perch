@@ -1,12 +1,9 @@
 .content-img-center {
-    display: block;
-    margin: 1em auto;
+    @apply block mx-auto my-4;
 }
 .content-img-left {
-    float: left;
-    margin: 1em 1em 1em 0;
+    @apply float-left my-4 mr-4;
 }
 .content-img-right {
-    float: right;
-    margin: 1em 0 1em 1em;
+    @apply float-right my-4 ml-4;
 }

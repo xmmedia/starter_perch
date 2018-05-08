@@ -1,35 +1,42 @@
-// mixins + normalize + common
-@import "common/vars",
-    "public/vars",
-    "common/mixins",
-    "public/mixins",
-    "common/media",
-    "common/common";
+@tailwind preflight;
+
+@tailwind components;
+
+// @todo rename to base?
+@import "common/common";
 
 // global styles on the most common elements
 html {
-    @include default-html-style;
+    @apply font-sans leading-normal text-black;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    @apply .leading-tight;
+}
+// re-add margin to p as it's reset in tailwind's normalize
+p {
+    @apply .my-4;
+}
 a {
     transition: color 0.25s ease;
     &:hover { }
 }
-address { font-style: normal; }
+address {
+    @apply .roman;
+}
+//
+//// load common styles
+//@import "common/forms",
+//    //"common/pagination",
+//    "common/alerts",
+//    //"common/modal",
+//    "common/ie9_warning",
+// "common/content_alignment";
 
-// load common styles
-@import "common/forms",
-    //"common/pagination",
-    "common/alerts",
-    //"common/modal",
-    "common/ie9_warning";
-
-// public only styles
-@import "public/content",
-    "public/buttons",
-    "public/headings",
-    "public/header",
-    "public/footer";
+//// public only styles
+@import "public/header";
 
 // page specific
 //@import ;
+
+@tailwind utilities;

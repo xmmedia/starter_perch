@@ -1,34 +1,6 @@
-$form-label-color-hover: lighten($text-color, 20%);
-$form-border-color: rgba(0, 0, 0, 0.1);
-
-// fixes space below textareas, making it consistent across browsers
-textarea {
-    vertical-align: top;
-}
-
-.form-input-align_right { text-align: right; }
-
-.form-form_wrap {
-    width: 90%;
-    max-width: 30em;
-    margin: 1em auto;
-    padding: 1em;
-    border-radius: $border-radius;
-    box-shadow: 0 5px 10px $form-border-color;
-    h2 { margin-top: 0; }
-    h4 { margin-bottom: 0.5em; }
-}
-
-.form-fieldset {
-    margin: 1.5em 0 1em;
-    padding: 1em 1em;
-    border: 1px solid $form-border-color;
-    > .form-field_wrap:last-of-type {
-        margin-bottom: 0.5em;
-    }
-}
-.form-fieldset-first {
-    margin-top: 0.5em;
+.form-wrap {
+    @apply w-9/10 max-w-sm mx-auto my-4 p-4 rounded-sm;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 @mixin text-input() {
@@ -37,195 +9,73 @@ textarea {
     }
 }
 
-.form-field-flex {
-    @include flex-row_wrap;
-}
-
-.form-field_wrap {
-    select {
-        height: 2.3em;
-        padding: 0.5em;
-    }
-}
-
-.form-field_wrap, .form_table-col {
-    margin-bottom: 1em;
+.field-wrap-text, .field-wrap-select {
+    @apply mb-4;
     label {
-        display: block;
-        margin-bottom: $form-space-separator;
+        @apply block mb-1;
     }
+}
+.field-wrap-text {
     @include text-input() {
-        width: 100%;
-        padding: 0.5em;
-        border: 1px solid rgba($color-grey-dark, 0.15);
-        border-radius: $border-radius;
+        @apply w-full p-2 border border-grey rounded-sm;
         background-color: rgba(255, 255, 255, 0.9);
     }
     input[type=file] { width: 100%; }
 }
-.form-field_wrap-no_width {
-    @include text-input() {
-        width: auto;
+.field-wrap-select {
+    select {
+        @apply p-2;
+        height: 2.3rem;
     }
 }
-.form-field_wrap-no_margin {
-    margin-bottom: 0;
-}
-.form-field_wrap-textarea {
-    textarea { height: 10em; }
-}
-.form-field_wrap-checkbox {
+.field-wrap-checkbox {
+    @apply mb-4;
     label {
-        display: inline-block;
-        margin-right: 1em;
-        margin-bottom: 0;
-        &:hover { color: $form-label-color-hover; }
+        @apply inline-block mr-4 mb-0;
     }
 }
-.form-field_wrap-radio_row {
+.field-wrap-radio_row {
     > label:first-of-type {
-        display: block;
-        margin-bottom: $form-space-separator;
+        @apply block mb-1;
     }
     label {
-        display: inline-block;
-        margin-right: 1em;
-        margin-bottom: 0;
-    }
-}
-.form-field_wrap-flex_horz {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-    > .form-field_wrap {
-        margin-bottom: 0;
+        @apply inline-block mr-4 mb-0;
     }
 }
 
-.form-field_wrap-flex_full_width {
-    display: block;
-    @include mq(wide_handhelds) {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1em;
-    }
-
-    > .form-field_wrap {
-        @include mq(wide_handhelds) {
-            flex-basis: 50%;
-            margin-bottom: 0;
-        }
-    }
-}
-
-.form-field_wrap-right_margin {
-    margin-right: 0.25em;
-}
-.form-field_wrap-readonly {
-    position: relative;
+.field-wrap-readonly {
+    @apply relative;
 
     @include text-input {
         opacity: 0.4;
     }
 
     &:after {
-        position: absolute;
+        @apply absolute pin-r text-xs opacity-50;
         top: 0.5em;
-        right: 0;
-        font-size: 0.7em;
-        opacity: 0.5;
         content: "read-only";
     }
 }
 
-// shows a "sub" of previous field
-.form-field_wrap-inset {
-    padding-left: 2em;
-    border-left: 3px solid darken($color-grey-light, 30%);
-}
-
-// for use inside of a field_wrap for multiple fields shown vertically
-.form-vertical_list > div {
-    label {
-        display: inline-block;
-        &:hover { color: $form-label-color-hover; }
-    }
-}
-
-.form-field_prefix {
-    flex: 1 0 auto;
-    margin-right: 0.5em;
-    label { margin-bottom: 0; }
-}
-.form-field_suffix {
-    margin-left: $form-space-separator;
-    flex: 0 0 auto;
-}
-.form-field_separator {
-    padding: 0 0.25em;
-}
-
-.form-field_help {
-    margin-top: 0.2em;
+.field-help {
+    @apply text-sm mt-1 italic text-grey-light;
     // the padding helps it align better with field above
     padding-left: 0.1em;
-    font-size: 0.8em;
-    color: lighten($text-color, 17%);
-    font-style: italic;
-}
-// for help by buttons
-.form-field_help-button {
-    margin-top: $form-space-separator;
 }
 
-// for lists of checkboxes or radios (shows as up to 3 columns)
-.form-row_item_wrap {
-    display: flex;
-    flex-flow: row wrap;
-    max-width: 100%;
-}
-.form-row_item {
-    flex: 0 0 50%;
-    @include mq(wide_handhelds) {
-        flex: 1 1 33%;
-    }
+.form-action {
+    @apply text-sm mr-4;
 }
 
-.form-button_wrap {
-    button, .button { margin-right: 0.5em; }
-}
-
-.form-action_link {
-    font-size: 0.8em;
-    margin-right: 1em;
-    color: rgba($link-color, 0.6);
-    &:hover { color: rgba($link-color, 1); }
-}
-
-.form-field_errors {
-    list-style: none;
-    margin: 0 0 $form-space-separator;
-    padding-left: 0;
+.field-errors {
+    @apply list-reset mb-1 pl-0;
     li {
-        margin-bottom: $form-space-separator;
-        padding: 0.5em;
-        background: $color-grey-light;
-        border-left: 10px solid $status-type-danger;
-        border-width: 0 0 0 10px;
+        @apply mb-1 p-2 bg-color-grey border-l border-10 border-red;
     }
 }
 
+// @todo DH review if needed
 // for the labels within the vich file uploader widget
 .vich-file label {
-    margin-top: $form-space-separator;
-}
-
-// form headings with links
-.form-heading_with_link_wrap {
-    display: flex;
-    align-items: flex-start;
-}
-.form-heading_links {
-    margin-left: auto;
-    a:last-child { margin-right: 0; }
+    @apply mb-1;
 }

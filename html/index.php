@@ -3,11 +3,13 @@
 <?php perch_layout('public.head'); ?>
 
 <body>
-	<?php perch_layout('public.ie8_warning'); ?>
+    <?php perch_layout('public.ie9_warning'); ?>
 
     <div id="app">
         <?php perch_layout('public.icons'); ?>
         <?php perch_layout('public.header'); ?>
+
+        <main class="max-w-90 max:max-w-2xl mx-auto clearfix"></main>
 
         <?php perch_layout('public.footer'); ?>
     </div>

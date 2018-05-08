@@ -1,36 +1,31 @@
 /* this file is for public and private/admin pages */
 
-// include this before normalize as normalize override it for some elements
-*, *:after, *:before { box-sizing: border-box; }
-
-@import "normalize";
-
-input[type=radio], input[type=checkbox] { margin-right: 0.3em; }
-// make sure everything shows a pointer on hover
-a[href], input[type='submit'], input[type='image'], label[for], select, button {
-    cursor: pointer;
+[type=radio], [type=checkbox] {
+    @apply mr-1;
 }
-td { vertical-align: top; }
-// make images scale automatically when width of the container changes
-img, object, embed { max-width: 100%; }
-img { height: auto; }
+// make sure everything shows a pointer on hover
+[type=submit], [type=image], label[for], select {
+    @apply cursor-pointer;
+}
+td {
+    @apply align-top;
+}
+// fixes space below textareas, making it consistent across browsers
+textarea {
+    @apply align-top;
+}
+
+// @todo needed?
+//img { height: auto; }
 
 // make anchors that are inside headers look like the header, but underline when hovered
 h1, h2, h3, h4 {
-    &:not(.heading-keep_margin):first-child { margin-top: 0; }
-
     a {
+        @apply no-underline;
         color: inherit;
-        text-decoration: none;
         &:hover, &:active {
+            @apply underline;
             color: inherit;
-            text-decoration: underline;
         }
     }
 }
-
-.-margin-no_top { margin-top: 0; }
-.-margin-no_margin { margin: 0; }
-.-display-hidden { display: none; }
-.-link-no_underline { text-decoration: none; }
-.-text-center { text-align: center; }

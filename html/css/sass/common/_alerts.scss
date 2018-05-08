@@ -1,36 +1,21 @@
 .alert {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    min-width: 10rem;
-    margin: 0 auto 1em;
-    padding: 0.5em;
-    background-color: $color-grey-light;
-    border-left: 10px solid transparent;
-    @include mq(tablets) {
-        width: 70%;
-    }
+    @apply flex justify-between w-4/5 mt-0 mx-auto mb-1 p-2 bg-grey border-l-10;
 
     // alerts nested inside forms should go the full width
-    .form-form_wrap & { width: 100%; }
+    .form-wrap & {
+        @apply w-full;
+    }
 }
 
 .alert-type-success {
-    border-left-color: $status-type-success;
+    @apply border-green;
 }
 .alert-type-info {
-    border-left-color: $status-type-info;
+    @apply border-blue-light;
 }
 .alert-type-warning {
-    border-left-color: $status-type-warning;
+    @apply border-orange;
 }
 .alert-type-danger {
-    border-left-color: $status-type-danger;
-}
-
-// no generic JS implemented to make the message disappear
-.alert-action-right {
-    // for <=IE9
-    float: right;
-    padding-left: 1em;
+    @apply border-red;
 }
