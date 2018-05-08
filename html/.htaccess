@@ -347,7 +347,6 @@ Options -MultiViews
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP_HOST} !^www\. [NC]
     # @todo will probably want to change this with the prefix of the dev site
     RewriteCond %{HTTP_HOST} !^dev\. [NC]
