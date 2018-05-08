@@ -9,7 +9,7 @@
         <?php perch_layout('public.icons'); ?>
         <?php perch_layout('public.header'); ?>
 
-        <main class="clearfix max-w-3xl mx-auto p-4 max:p-0"></main>
+        <main class="max-w-90 max:max-w-2xl mx-auto clearfix"></main>
 
         <?php perch_layout('public.footer'); ?>
     </div>
