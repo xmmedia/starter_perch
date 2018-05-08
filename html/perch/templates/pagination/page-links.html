@@ -1,9 +1,9 @@
-<perch:before><ul></perch:before>
+<perch:before><ul class="list-reset clearfix mx-auto my-4 text-center"></perch:before>
 <li<perch:if exists="selected"> class="active"</perch:if>>
 	<perch:if exists="spacer">
 		<perch:pages id="page_number" />
 	<perch:else />
-		<a href="<perch:pages id="url" />"><perch:pages id="page_number" /></a>
+		<a href="<perch:pages id="url" />"><perch:pages id="page_number"  class="hidden w-12 p-1  wide_tablets:inline-block rounded-sm" /></a>
 	</perch:if>
 </li>
 <perch:after></ul></perch:after>

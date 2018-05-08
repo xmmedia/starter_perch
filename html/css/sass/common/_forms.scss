@@ -1,11 +1,5 @@
 .form-wrap {
-    // @todo complete conversion
-    @apply w-9/10 max-w-sm;
-    //width: 90%;
-    //max-width: 30em;
-    margin: 1em auto;
-    padding: 1em;
-    border-radius: $border-radius;
+    @apply w-9/10 max-w-sm mx-auto my-4 p-4 rounded-sm;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,10 +17,7 @@
 }
 .field-wrap-text {
     @include text-input() {
-        width: 100%;
-        padding: 0.5em;
-        border: 1px solid rgba($color-grey-dark, 0.15);
-        border-radius: $border-radius;
+        @apply w-full p-2 border border-grey rounded-sm;
         background-color: rgba(255, 255, 255, 0.9);
     }
     input[type=file] { width: 100%; }
@@ -40,10 +31,7 @@
 .field-wrap-checkbox {
     @apply mb-4;
     label {
-        // @todo tailwind
-        display: inline-block;
-        margin-right: 1em;
-        margin-bottom: 0;
+        @apply inline-block mr-4 mb-0;
     }
 }
 .field-wrap-radio_row {
@@ -51,57 +39,38 @@
         @apply block mb-1;
     }
     label {
-        display: inline-block;
-        margin-right: 1em;
-        margin-bottom: 0;
+        @apply inline-block mr-4 mb-0;
     }
 }
 
-// @todo tailwind
 .field-wrap-readonly {
-    position: relative;
+    @apply relative;
 
     @include text-input {
         opacity: 0.4;
     }
 
     &:after {
-        position: absolute;
+        @apply absolute pin-r text-xs opacity-50;
         top: 0.5em;
-        right: 0;
-        font-size: 0.7em;
-        opacity: 0.5;
         content: "read-only";
     }
 }
 
-// @todo tailwind
 .field-help {
-    margin-top: 0.2em;
+    @apply text-sm mt-1 italic text-grey-light;
     // the padding helps it align better with field above
     padding-left: 0.1em;
-    font-size: 0.8em;
-    color: lighten($text-color, 17%);
-    font-style: italic;
 }
 
-// @todo tailwind
 .form-action {
-    font-size: 0.8em;
-    margin-right: 1em;
+    @apply text-sm mr-4;
 }
 
-// @todo tailwind
 .field-errors {
-    list-style: none;
-    margin: 0 0 $form-space-separator;
-    padding-left: 0;
+    @apply list-reset mb-1 pl-0;
     li {
-        margin-bottom: $form-space-separator;
-        padding: 0.5em;
-        background: $color-grey-light;
-        border-left: 10px solid $status-type-danger;
-        border-width: 0 0 0 10px;
+        @apply mb-1 p-2 bg-color-grey border-l border-10 border-red;
     }
 }
 
