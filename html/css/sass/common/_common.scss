@@ -5,6 +5,26 @@ a {
     &:hover { }
 }
 
+// reset margins on headings as tailwind removes them
+h1 {
+    margin: 0.67rem 0;
+}
+h2 {
+    margin: 0.83rem 0;
+}
+h3 {
+    margin: 1rem 0;
+}
+h4 {
+    margin: 1.33rem 0;
+}
+h5 {
+    margin: 1.67rem 0;
+}
+h6 {
+    margin: 2.33rem 0;
+}
+
 // make anchors that are inside headers look like the header, but underline when hovered
 h1, h2, h3, h4 {
     a {
