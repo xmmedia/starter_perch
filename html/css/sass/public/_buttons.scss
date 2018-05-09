@@ -1,4 +1,8 @@
-button, .button {
+button,
+[type=submit],
+[type="button"],
+[type="reset"],
+.button {
 
 }
 
