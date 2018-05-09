@@ -1,28 +1,28 @@
 <div class="anchor" id="sent"></div>
 <perch:form id="contact" method="post" action="#sent" app="perch_forms" accept-charset="utf-8">
     <perch:success>
-         <div class="alert alert-type-success">
+         <div class="alert alert-success">
              <perch:content id="thankyou" label="Success Message" type="textarea" textile="true" editor="markitup" />
          </div>
     </perch:success>
     <perch:error for="all" type="general">
-        <div class="alert alert-type-danger">Looks like something isn't quite right. Please see the messages below.</div>
+        <div class="alert alert-danger">Looks like something isn't quite right. Please see the messages below.</div>
     </perch:error>
 
     <div class="field-wrap">
         <perch:label for="name">Name</perch:label>
         <perch:error for="name" type="required">
-            <div class="alert alert-type-danger">Please enter your name</div>
+            <div class="alert alert-danger">Please enter your name</div>
         </perch:error>
         <perch:input type="text" id="name" required="true" label="Name" size="30" maxlength="100" />
     </div>
     <div class="field-wrap">
         <perch:label for="email">Email</perch:label>
         <perch:error for="email" type="required">
-            <div class="alert alert-type-danger">Please add your email address</div>
+            <div class="alert alert-danger">Please add your email address</div>
         </perch:error>
         <perch:error for="email" type="format">
-            <div class="alert alert-type-danger">Please check your email address</div>
+            <div class="alert alert-danger">Please check your email address</div>
         </perch:error>
         <perch:input type="email" id="email" required="true" label="Email" placeholder="Required – you@example.com" size="30" maxlength="100" />
     </div>
@@ -33,7 +33,7 @@
     <div class="field-wrap field-wrap-textarea">
         <perch:label for="message">Message</perch:label>
         <perch:error for="message" type="required">
-            <div class="alert alert-type-danger">Please add a message</div>
+            <div class="alert alert-danger">Please add a message</div>
         </perch:error>
         <perch:input type="textarea" id="message" required="true" label="Message" />
     </div>

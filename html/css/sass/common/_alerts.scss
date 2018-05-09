@@ -7,15 +7,15 @@
     }
 }
 
-.alert-type-success {
+.alert-success {
     @apply border-green;
 }
-.alert-type-info {
+.alert-info {
     @apply border-blue-light;
 }
-.alert-type-warning {
+.alert-warning {
     @apply border-orange;
 }
-.alert-type-danger {
+.alert-danger {
     @apply border-red;
 }
