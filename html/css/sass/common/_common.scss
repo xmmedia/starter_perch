@@ -48,17 +48,5 @@ td {
     @apply align-top;
 }
 
-[type=radio], [type=checkbox] {
-    @apply mr-1;
-}
-// make sure everything shows a pointer on hover
-[type=submit], [type=image], label[for], select {
-    @apply cursor-pointer;
-}
-// fixes space below textareas, making it consistent across browsers
-textarea {
-    @apply align-top;
-}
-
 // @todo needed?
 //img { height: auto; }

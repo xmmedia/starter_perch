@@ -1,30 +1,46 @@
+// style all form controls/inputs
+[type=text],
+[type=password],
+[type=date],
+[type=datetime],
+[type=datetime-local],
+[type=month],
+[type=week],
+[type=email],
+[type=number],
+[type=search],
+[type=tel],
+[type=time],
+[type=url],
+[type=color],
+textarea {
+    @apply w-full p-2 border border-grey rounded-sm bg-grey-lightest;
+}
+textarea {
+    // fixes space below textareas, making it consistent across browsers
+    @apply align-top;
+}
+select {
+    @apply w-full p-2 border border-grey rounded-sm bg-grey-lightest;
+    height: 2.3rem;
+}
+[type=radio], [type=checkbox] {
+    @apply mr-1;
+}
+// make sure everything shows a pointer on hover
+[type=submit], [type=image], label[for], select {
+    @apply cursor-pointer;
+}
+[type=file] { width: 100%; }
+
 .form-wrap {
     @apply w-9/10 max-w-sm mx-auto my-4 p-4 rounded-sm shadow-md;
 }
 
-@mixin text-input() {
-    input:not([type=submit]):not([type=button]):not([type=file]):not([type=radio]):not([type=checkbox]):not([type=color]), textarea, select {
-        @content;
-    }
-}
-
-.field-wrap-text, .field-wrap-select {
+.field-wrap {
     @apply mb-4;
     label {
         @apply block mb-1;
-    }
-}
-.field-wrap-text {
-    @include text-input() {
-        @apply w-full p-2 border border-grey rounded-sm;
-        background-color: rgba(255, 255, 255, 0.9);
-    }
-    input[type=file] { width: 100%; }
-}
-.field-wrap-select {
-    select {
-        @apply p-2;
-        height: 2.3rem;
     }
 }
 .field-wrap-checkbox {
@@ -33,7 +49,8 @@
         @apply inline-block mr-4 mb-0;
     }
 }
-.field-wrap-radio_row {
+.field-wrap-radios, .field-wrap-checkboxes {
+    @apply mb-4;
     > label:first-of-type {
         @apply block mb-1;
     }
@@ -45,8 +62,8 @@
 .field-wrap-readonly {
     @apply relative;
 
-    @include text-input {
-        opacity: 0.4;
+    input {
+        @apply opacity-50;
     }
 
     &:after {
@@ -57,13 +74,16 @@
 }
 
 .field-help {
-    @apply text-sm mt-1 italic text-grey-light;
+    @apply text-sm mt-1 italic text-grey-dark;
     // the padding helps it align better with field above
     padding-left: 0.1em;
 }
 
 .form-action {
-    @apply text-sm mr-4;
+    @apply text-sm ml-4 opacity-75;
+    &:hover {
+        @apply opacity-100;
+    }
 }
 
 .field-errors {
@@ -75,6 +95,8 @@
 
 // @todo DH review if needed
 // for the labels within the vich file uploader widget
-.vich-file label {
-    @apply mb-1;
+.vich-file, .vich-image {
+    label {
+        @apply mb-1;
+    }
 }
