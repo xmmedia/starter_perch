@@ -73,7 +73,12 @@ module.exports = function (Encore) {
                         // Specify the file extensions to include when scanning for class names
                         extensions: ['html', 'js', 'php', 'vue'],
                     }
-                ]
+                ],
+                whitelistPatterns: [
+                    // vue transition classes: https://vuejs.org/v2/guide/transitions.html#Transition-Classes
+                    /-enter/,
+                    /-leave/,
+                ],
             }));
     }
 };
