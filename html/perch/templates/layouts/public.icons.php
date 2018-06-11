@@ -1,1 +1,1 @@
-<svg-icons src="<?php Common::version_file('/build/images/icons-public.svg'); ?>"></svg-icons>
+<svg-icons src="<?php Common::version_file('build/images/icons-public.svg'); ?>"></svg-icons>
