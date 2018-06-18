@@ -60,6 +60,7 @@ module.exports = function (Encore) {
             .addPlugin(new PurgecssPlugin({
                 // Specify the locations of any files you want to scan for class names.
                 paths: glob.sync([
+                    path.join(__dirname, 'html/**/*.php'),
                     path.join(__dirname, 'html/perch/templates/**/*.html'),
                     path.join(__dirname, 'html/perch/templates/**/*.php'),
                     path.join(__dirname, 'html/perch/addons/**/*.html'),
