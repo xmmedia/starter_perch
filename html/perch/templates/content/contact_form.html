@@ -26,6 +26,10 @@
         </perch:error>
         <perch:input type="email" id="email" required="true" label="Email" placeholder="Required – you@example.com" size="30" maxlength="100" />
     </div>
+    <div class="-display-hidden">
+        <perch:label for="email_verification">Email Verification</perch:label>
+        <perch:input type="text" id="email_verification" antispam="honeypot" />
+    </div>
     <div class="field-wrap">
         <perch:label for="phone">Phone</perch:label>
         <perch:input type="tel" id="phone" label="Phone" placeholder="Optional – 403-222-3333" size="15" maxlength="15" />
@@ -39,10 +43,6 @@
     </div>
 
     <perch:input type="cms" />
-    <div class="-display-hidden">
-        <perch:label for="email_verification">Email Verification</perch:label>
-        <perch:input type="text" id="email_verification" antispam="honeypot" />
-    </div>
     
     <div class="form-button_wrap">
         <button>Send</button>
