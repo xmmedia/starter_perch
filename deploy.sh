@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Consider using Gitlab CI"
+
 echo "-- Deploy Setup"
 # this will setup nvm so the rest will work
 . ~/.nvm/nvm.sh
