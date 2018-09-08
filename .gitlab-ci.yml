@@ -1,0 +1,66 @@
+stages:
+- deploy
+
+# Select image from https://hub.docker.com/_/php/
+image: php:7.2-cli
+
+# Select what we should cache
+cache:
+  paths:
+    - node_modules/
+
+variables:
+  RELEASES: "$REMOTE_BASE/releases"
+  SHARED: "$REMOTE_BASE/shared"
+
+before_script:
+  # setup SSH & private key
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -yqq )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh; chmod 700 ~/.ssh
+  - ssh-keyscan -p $REMOTE_PORT $REMOTE_SERVER >> ~/.ssh/known_hosts
+  # the following line is optional (likely remove previous line)
+  #- echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  # Install packages
+  - apt-get install gnupg2 build-essential libssl-dev -yqq
+  - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+  # Install git, the php image doesn't have installed
+  - apt-get install git zip unzip gcc g++ make nodejs -yqq
+  - alias nodejs=node
+  # add package key for yarn
+  - curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+  - apt-get update -yqq && apt-get install yarn -yqq
+
+deploy:
+  stage: deploy
+  when: manual
+  allow_failure: false
+  script:
+    - php -v
+    - node --version
+    # setup vars for paths
+    - TIMESTAMP=$(date +%s); RELEASE="$RELEASES/$TIMESTAMP"
+    - echo "Paths:"; echo $REMOTE_BASE; echo $RELEASE; echo $SHARED
+    - echo "Remote:"; echo $REMOTE_USER@$REMOTE_SERVER:$REMOTE_PORT
+    # Install node/JS dependencies
+    - yarn install --non-interactive
+    - yarn build
+    # add .revision file
+    - git rev-parse --verify --short HEAD > .revision
+    # ensure based paths exist
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "mkdir -p $RELEASES $SHARED $SHARED/html/perch/resources"
+    # sync files to deployment cache
+    - rsync --archive --stats --human-readable --no-perms --exclude ".git/" --exclude ".idea/" --exclude "node_modules/" -e "ssh -p $REMOTE_PORT" . $REMOTE_USER@$REMOTE_SERVER:$RELEASE
+    # copy parameters file into place
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cp -a $SHARED/config_private.php $RELEASE/html/perch/config/config_private.php"
+    # link shared folders
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -rf $RELEASE/html/perch/resources; ln -s $SHARED/html/perch/resources $RELEASE/html/perch/resources"
+    # switch to new version; run composer on server; db migrations
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -f $REMOTE_BASE/current; ln -s $RELEASE $REMOTE_BASE/current; cd $RELEASE"
+    # clear opcache
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cd $RELEASE; echo '<?php opcache_reset();' > html/opcache_reset.php; curl $HTTP_ROOT/opcache_reset.php; rm html/opcache_reset.php" || echo -e "\033[0;31mFAILURE unable to reset OPcache"
+    # remove >3 releases
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "ls -1d $RELEASES/* | sort -rg | tail -n +4 | xargs /bin/rm -rf"
