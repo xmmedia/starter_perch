@@ -46,7 +46,7 @@ deploy:
     - echo "Paths:"; echo $REMOTE_BASE; echo $RELEASE; echo $SHARED
     - echo "Remote:"; echo $REMOTE_USER@$REMOTE_SERVER:$REMOTE_PORT
     # Install node/JS dependencies
-    - yarn install --non-interactive
+    - yarn install --non-interactive --frozen-lockfile
     - yarn build
     # add .revision file
     - git rev-parse --verify --short HEAD > .revision
