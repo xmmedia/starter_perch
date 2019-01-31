@@ -1,28 +1,29 @@
 <template>
-    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" v-html="svg"></div>
+    <div v-if="svg" style="height: 0; width: 0; position: absolute; visibility: hidden;" v-html="svg"></div>
 </template>
 
 <script>
-import axios from '../common/axios';
+import fetch from 'unfetch';
 
 export default {
-    props : ['src'],
-    data() {
+    props: {
+        src: {
+            type: String,
+            required: true,
+        },
+    },
+
+    data () {
         return {
-            svg : ''
+            svg: '',
         };
     },
 
-    mounted() {
-        let self = this;
+    async mounted () {
+        const response = await fetch(this.src);
 
-        axios.get(this.src)
-            .then((response) => {
-                self.svg = response.data;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+        this.svg = await response.text();
+    },
 }
 </script>
+I
