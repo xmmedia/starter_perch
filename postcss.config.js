@@ -1,7 +1,7 @@
 module.exports = {
     plugins: [
         require('tailwindcss')('./tailwind.js'),
-        require('autoprefixer')
+        require('autoprefixer'),
     ],
-    sourceMap : 'prev'
+    sourceMap : 'prev',
 };
