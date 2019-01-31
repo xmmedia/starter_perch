@@ -4,7 +4,7 @@
 
 const Encore = require('@symfony/webpack-encore');
 const encoreConfigure = require('./webpack.base.config');
-const webpackCustomize = require('./webpack.customize');
+const merge = require('webpack-merge');
 
 encoreConfigure(Encore);
 
@@ -14,8 +14,4 @@ Encore
     .setManifestKeyPrefix('build/')
     .enableVersioning(false);
 
-let config = Encore.getWebpackConfig();
-
-webpackCustomize(config);
-
-module.exports = config;
+module.exports = merge(Encore.getWebpackConfig(), require('./webpack.customize'));
