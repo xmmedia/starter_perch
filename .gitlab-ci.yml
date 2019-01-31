@@ -1,5 +1,5 @@
 stages:
-- deploy
+  - deploy
 
 # Select image from https://hub.docker.com/_/php/
 image: php:7.2-cli
@@ -25,7 +25,7 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
   # Install packages
   - apt-get install gnupg2 build-essential libssl-dev -yqq
-  - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+  - curl -sL https://deb.nodesource.com/setup_10.x | bash -
   # Install git, the php image doesn't have installed
   - apt-get install git zip unzip gcc g++ make nodejs -yqq
   - alias nodejs=node
@@ -41,6 +41,7 @@ deploy:
   script:
     - php -v
     - node --version
+    - yarn --version
     # setup vars for paths
     - TIMESTAMP=$(date +%s); RELEASE="$RELEASES/$TIMESTAMP"
     - echo "Paths:"; echo $REMOTE_BASE; echo $RELEASE; echo $SHARED
@@ -52,14 +53,14 @@ deploy:
     - git rev-parse --verify --short HEAD > .revision
     # ensure based paths exist
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "mkdir -p $RELEASES $SHARED $SHARED/html/perch/resources"
-    # sync files to deployment cache
+    # sync files to release directory
     - rsync --archive --stats --human-readable --no-perms --exclude ".git/" --exclude ".idea/" --exclude "node_modules/" -e "ssh -p $REMOTE_PORT" . $REMOTE_USER@$REMOTE_SERVER:$RELEASE
-    # copy parameters file into place
+    # copy config file into place
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cp -a $SHARED/config_private.php $RELEASE/html/perch/config/config_private.php"
     # link shared folders
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -rf $RELEASE/html/perch/resources; ln -s $SHARED/html/perch/resources $RELEASE/html/perch/resources"
     # switch to new version; run composer on server; db migrations
-    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -f $REMOTE_BASE/current; ln -s $RELEASE $REMOTE_BASE/current; cd $RELEASE"
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -f $REMOTE_BASE/current; ln -s $RELEASE $REMOTE_BASE/current"
     # clear opcache
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cd $RELEASE; echo '<?php opcache_reset();' > html/opcache_reset.php; curl $HTTP_ROOT/opcache_reset.php; rm html/opcache_reset.php" || echo -e "\033[0;31mFAILURE unable to reset OPcache"
     # remove >3 releases
