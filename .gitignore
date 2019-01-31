@@ -43,6 +43,8 @@ cypress/integration/examples
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+# @todo-perch delete
+.idea/**/webServers.xml
 ###< phpstorm ###
 
 ###> vscode ###
