@@ -3,31 +3,48 @@ Icon?
 .svn
 *~
 *.swp
+coverage
 sftp-config.json
 .remote-sync.json
 .sass-cache
-node_modules
+/node_modules/
+/composer.phar
+webpack-stats.json
+html/service-worker.js
 /html/build/
 html/perch/resources/*
 !html/perch/resources/.gitkeep
 # @todo-perch uncomment
 # html/perch/config/config_private.php
+npm-debug.log
+yarn-error.log
 
+###> cypress ###
+cypress/videos
+cypress/screenshots
+cypress/integration/examples
+###< cypress ###
+
+###> phpstorm ###
 # PhpStorm
 # User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml
-
-# Sensitive or high-churn files:
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+# Generated files
+.idea/**/contentModel.xml
+# Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
-.idea/**/dataSources.xml
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
-.idea/**/webServers.xml
+.idea/**/dbnavigator.xml
+###< phpstorm ###
 
-# Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
+###> vscode ###
+.vscode
+###< vscode ###
