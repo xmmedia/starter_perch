@@ -51,11 +51,21 @@ select {
 }
 .field-wrap-radios, .field-wrap-checkboxes {
     @apply mb-4;
+    label {
+        @apply inline-block mr-4 mb-0;
+    }
+}
+/* stylelint-disable-next-line no-duplicate-selectors */
+.field-wrap-radios, .field-wrap-checkboxes {
     > label:first-of-type {
         @apply block mb-1;
     }
-    label {
-        @apply inline-block mr-4 mb-0;
+}
+
+.field-errors {
+    @apply list-reset mb-1 pl-0;
+    li {
+        @apply mb-1 p-2 bg-grey-lighter border-l-10 border-red;
     }
 }
 
@@ -74,29 +84,11 @@ select {
 }
 
 .field-help {
-    @apply text-sm italic text-grey-dark;
+    @apply text-xs italic text-grey-dark leading-tight;
     // the padding helps it align better with field above
     padding-left: 0.1em;
 }
 
 .form-action {
-    @apply text-sm ml-4 opacity-75;
-    &:hover {
-        @apply opacity-100;
-    }
-}
-
-.field-errors {
-    @apply list-reset mb-1 pl-0;
-    li {
-        @apply mb-1 p-2 bg-grey-lighter border-l-10 border-red;
-    }
-}
-
-// @todo DH review if needed
-// for the labels within the vich file uploader widget
-.vich-file, .vich-image {
-    label {
-        @apply mb-1;
-    }
+    @apply text-sm ml-4;
 }

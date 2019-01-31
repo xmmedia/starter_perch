@@ -1,8 +1,8 @@
 /* this file is for public and private/admin pages */
 
-a {
+a, .button-link {
     transition: color 0.25s ease;
-    &:hover { }
+    //&:hover, &:active { }
 }
 
 // reset margins on headings as tailwind removes them
@@ -47,6 +47,3 @@ address {
 td {
     @apply align-top;
 }
-
-// @todo needed?
-//img { height: auto; }
