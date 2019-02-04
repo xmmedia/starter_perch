@@ -58,7 +58,7 @@ deploy:
     # copy config file into place
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cp -a $SHARED/config_private.php $RELEASE/html/perch/config/config_private.php"
     # link shared folders
-    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -rf $RELEASE/html/perch/resources; ln -s $SHARED/html/perch/resources $RELEASE/html/perch/resources"
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -rf $RELEASE/html/perch/resources; ln -s $SHARED/html/perch/resources $RELEASE/html/perch/resources; rm -rf $RELEASE/sessions; ln -s $SHARED/sessions $RELEASE/sessions"
     # switch to new version; run composer on server; db migrations
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -f $REMOTE_BASE/current; ln -s $RELEASE $REMOTE_BASE/current"
     # clear opcache
