@@ -2,7 +2,7 @@
 <perch:form id="contact" method="post" action="#sent" app="perch_forms" accept-charset="utf-8">
     <perch:success>
          <div class="alert alert-success">
-             <perch:content id="thankyou" label="Success Message" type="textarea" textile="true" editor="markitup" />
+             <perch:content id="thankyou" label="Success Message" type="textarea" markdown editor="simplemde" />
          </div>
     </perch:success>
     <perch:error for="all" type="general">
@@ -14,7 +14,7 @@
         <perch:error for="name" type="required">
             <div class="alert alert-danger">Please enter your name.</div>
         </perch:error>
-        <perch:input type="text" id="name" required="true" label="Name" size="30" maxlength="100" />
+        <perch:input type="text" id="name" required="true" label="Name" size="30" maxlength="100" antispam="name" />
     </div>
     <div class="field-wrap">
         <perch:label for="email">Email</perch:label>
@@ -24,9 +24,9 @@
         <perch:error for="email" type="format">
             <div class="alert alert-danger">Please check your email address.</div>
         </perch:error>
-        <perch:input type="email" id="email" required="true" label="Email" placeholder="Required – you@example.com" size="30" maxlength="100" />
+        <perch:input type="email" id="email" required="true" label="Email" placeholder="Required – you@example.com" size="30" maxlength="100" antispam="email" />
     </div>
-    <div class="-display-hidden">
+    <div class="hidden">
         <perch:label for="email_verification">Email Verification</perch:label>
         <perch:input type="text" id="email_verification" antispam="honeypot" />
     </div>
@@ -39,12 +39,12 @@
         <perch:error for="message" type="required">
             <div class="alert alert-danger">Please add a message.</div>
         </perch:error>
-        <perch:input type="textarea" id="message" required="true" label="Message" />
+        <perch:input type="textarea" id="message" required="true" label="Message" antispam="body" />
     </div>
 
     <perch:input type="cms" />
     
     <div class="form-button_wrap">
-        <button>Send</button>
+        <perch:input type="submit" id="submit" value="Send" class="button" />
     </div>
 </perch:form>
