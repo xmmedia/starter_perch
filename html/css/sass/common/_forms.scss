@@ -14,27 +14,34 @@
 [type=url],
 [type=color],
 textarea {
-    @apply w-full p-2 border border-grey rounded-sm bg-grey-lightest;
+    @apply w-full p-1 border border-gray-500 rounded-sm bg-gray-100;
 }
 textarea {
     // fixes space below textareas, making it consistent across browsers
     @apply align-top;
 }
 select {
-    @apply w-full p-2 border border-grey rounded-sm bg-grey-lightest;
-    height: 2.3rem;
+    @apply w-full p-1 border border-gray-500 rounded-sm bg-gray-100;
+    height: 2.14rem;
 }
 [type=radio], [type=checkbox] {
     @apply mr-1;
 }
+// fixes alignment of radio to label
+[type=radio] {
+    @apply relative;
+    top: -1px;
+}
 // make sure everything shows a pointer on hover
-[type=submit], [type=image], label[for], select {
+[type=submit], [type=image], label, select {
     @apply cursor-pointer;
 }
-[type=file] { width: 100%; }
+[type=file] {
+    width: 100%;
+}
 
 .form-wrap {
-    @apply w-9/10 max-w-sm mx-auto my-4 p-4 rounded-sm shadow-md;
+    @apply w-11/12 max-w-md mx-auto my-4 p-4 rounded-sm shadow-md;
 }
 
 .field-wrap {
@@ -44,22 +51,33 @@ select {
     }
 }
 .field-wrap-checkbox {
-    @apply mb-4;
-    label {
-        @apply inline-block mr-4 mb-0;
-    }
-}
-.field-wrap-radios, .field-wrap-checkboxes {
-    @apply mb-4;
+    @apply flex items-center mb-4;
     label {
         @apply inline-block mr-4 mb-0;
     }
 }
 
+.field-wrap-radio {
+    @apply mb-1;
+}
+
+.field-wrap-radios, .field-wrap-checkboxes {
+    @apply mb-4;
+    label {
+        @apply inline-block mr-4 mb-0;
+    }
+    legend {
+        @apply mb-1;
+    }
+    .field-wrap-checkbox {
+        @apply mb-1;
+    }
+}
+
 .field-errors {
-    @apply list-reset mb-1 pl-0;
+    @apply mb-1 pl-0 list-none;
     li {
-        @apply mb-1 p-2 bg-grey-lighter border-l-10 border-red;
+        @apply mb-1 p-2 bg-gray-200 border-l-10 border-red-700;
     }
 }
 
@@ -71,14 +89,14 @@ select {
     }
 
     &:after {
-        @apply absolute pin-r text-xs opacity-50;
+        @apply absolute right-0 text-xs opacity-50;
         top: 0.5em;
         content: "read-only";
     }
 }
 
 .field-help {
-    @apply text-xs italic text-grey-dark leading-tight;
+    @apply text-xs italic text-gray-600 leading-tight;
     // the padding helps it align better with field above
     padding-left: 0.1em;
 }

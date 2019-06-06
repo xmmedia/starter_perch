@@ -1,27 +1,39 @@
 /* this file is for public and private/admin pages */
 
 a, .button-link {
+    @apply text-blue-500 underline;
     transition: color 0.25s ease;
-    //&:hover, &:active { }
+    &:hover, &:active {
+        @apply text-blue-600;
+    }
 }
 
-// reset margins on headings as tailwind removes them
+h1, h2, h3, h4, h5, h6 {
+    @apply leading-tight font-bold;
+}
+
+// reset margins and text size on headings as tailwind removes them
 h1 {
+    @apply text-3xl;
     margin: 0.67rem 0;
 }
 h2 {
+    @apply text-2xl;
     margin: 0.83rem 0;
 }
 h3 {
+    @apply text-xl;
     margin: 1rem 0;
 }
 h4 {
     margin: 1.33rem 0;
 }
 h5 {
+    @apply text-sm;
     margin: 1.67rem 0;
 }
 h6 {
+    @apply text-xs;
     margin: 2.33rem 0;
 }
 
@@ -39,9 +51,19 @@ h1, h2, h3, h4 {
 p {
     @apply my-4;
 }
+//re-add list styles as tailwind removes them
+ul, ol {
+    @apply pl-10;
+}
+ul {
+    @apply list-disc;
+}
+ol {
+    @apply list-decimal;
+}
 
 address {
-    @apply roman;
+    @apply not-italic;
 }
 
 td {
