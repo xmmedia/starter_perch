@@ -1,10 +1,8 @@
 module.exports = {
   theme: {
-
     extend: {
         colors: {
             'inherit': 'inherit',
-            'orange-600': '#de751f',
         },
         borderWidth: {
             '10': '10px',
