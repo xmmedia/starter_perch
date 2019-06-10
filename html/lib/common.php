@@ -30,7 +30,7 @@ class Common
      */
     public static function e($string)
     {
-        echo self::escape($string);
+        self::escape($string);
     }
 
     /**
