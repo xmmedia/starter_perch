@@ -1,3 +1,4 @@
+// Resets tailwinds default line-height
 .button {
-
+    @apply leading-tight;
 }
