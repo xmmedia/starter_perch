@@ -41,7 +41,7 @@ select {
 }
 
 .form-wrap {
-    @apply w-11/12 max-w-2xl mx-auto my-4 p-4 rounded-sm shadow-md;
+    @apply w-11/12 max-w-lg mx-auto my-4 p-4 rounded-sm shadow-md;
 }
 
 .field-wrap {
@@ -96,7 +96,7 @@ select {
 }
 
 .field-help {
-    @apply text-xs italic text-gray-600 leading-tight;
+    @apply mt-px text-xs italic text-gray-600 leading-tight;
     // the padding helps it align better with field above
     padding-left: 0.1em;
 }
