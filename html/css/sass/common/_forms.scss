@@ -51,7 +51,7 @@ select {
     }
 }
 .field-wrap-checkbox {
-    @apply flex items-center mb-4;
+    @apply flex flex-wrap items-center mb-4;
     label {
         @apply inline-block mr-4 mb-0;
     }
@@ -96,7 +96,7 @@ select {
 }
 
 .field-help {
-    @apply mt-px text-xs italic text-gray-600 leading-tight;
+    @apply w-full mt-px text-xs italic text-gray-600 leading-tight;
     // the padding helps it align better with field above
     padding-left: 0.1em;
 }
