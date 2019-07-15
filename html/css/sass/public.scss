@@ -6,7 +6,14 @@
 
 // global styles on the most common elements
 html {
-    @apply font-sans leading-normal text-black;
+    @apply font-sans leading-normal text-gray-800;
+}
+
+a, .button-link {
+    @apply text-blue-600 no-underline font-light;
+    &:hover, &:active {
+        @apply underline;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
