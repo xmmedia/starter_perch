@@ -68,6 +68,10 @@
             <h2>Buttons</h2>
             <button class="button">Button Button</button>
             <a href="" class="button">Link Button</a>
+            <div class="flex my-4">
+                <button class="button-link">Button Link</button>
+                <a href="" class="ml-4">Link</a>
+            </div>
             <div style="background: grey; margin-top: 1rem; padding: 1rem;">
                 <h2>Buttons on Dark Background</h2>
                 <button class="button">Button Button</button>
