@@ -69,3 +69,7 @@ address {
 td {
     @apply align-top;
 }
+
+.transition {
+    transition: all 0.25s ease;
+}
