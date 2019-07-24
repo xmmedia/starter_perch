@@ -14,15 +14,23 @@
 [type=url],
 [type=color],
 textarea {
-    @apply w-full px-2 py-1 border border-gray-500 rounded-sm bg-gray-100;
+    @apply w-full px-2 py-1 text-black border border-gray-400 rounded-sm bg-gray-200;
+    transition: background-color 0.25s ease;
+    &:focus {
+        @apply border-gray-500 bg-gray-100;
+    }
 }
 textarea {
     // fixes space below textareas, making it consistent across browsers
-    @apply align-top;
+    @apply align-top text-black;
 }
 select {
-    @apply w-full p-1 border border-gray-500 rounded-sm bg-gray-100;
+    @apply w-full p-1 text-black border border-gray-400 rounded-sm bg-gray-200;
     height: 2.14rem;
+    transition: background-color 0.25s ease;
+    &:focus {
+        @apply border-gray-500 bg-gray-100;
+    }
 }
 [type=checkbox] {
     @apply mr-2;
@@ -50,6 +58,7 @@ select {
         @apply block mb-1;
     }
 }
+//flex-wrap will ensure help is on a separate line
 .field-wrap-checkbox {
     @apply flex flex-wrap items-center mb-4;
     label {
@@ -90,11 +99,12 @@ select {
 
     &:after {
         @apply absolute right-0 text-xs opacity-50;
-        top: 0.5em;
+        top: 0.5rem;
         content: "read-only";
     }
 }
 
+// 100% width wraps help when within a flexbox (ex. for a checkbox).
 .field-help {
     @apply w-full mt-px text-xs italic text-gray-600 leading-tight;
     // the padding helps it align better with field above
