@@ -17,6 +17,9 @@ module.exports = {
         },
     },
   },
-  variants: {},
+  variants: {
+    textColor: ['group-hover'],
+    borderColor: ['group-hover'],
+  },
   plugins: []
 }
