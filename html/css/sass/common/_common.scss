@@ -49,7 +49,7 @@ h1, h2, h3, h4 {
 
 // re-add margin to p as it's reset in tailwind's normalize
 p {
-    @apply my-4;
+    margin: 1em 0;
 }
 //re-add list styles as tailwind removes them
 ul, ol {
