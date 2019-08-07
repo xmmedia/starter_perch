@@ -5,6 +5,11 @@
     .form-wrap & {
         @apply w-full;
     }
+
+    // this is needed because Perch adds a <p> tag into the success message.
+    p:last-of-type {
+        margin-bottom: 0;
+    }
 }
 
 .alert-success {
