@@ -14,7 +14,7 @@
         <perch:error for="name" type="required">
             <div class="alert alert-danger">Please enter your name.</div>
         </perch:error>
-        <perch:input type="text" id="name" required="true" label="Name" size="30" maxlength="100" antispam="name" />
+        <perch:input type="text" id="name" required label="Name" size="30" maxlength="100" antispam="name" />
     </div>
     <div class="field-wrap">
         <perch:label for="email">Email</perch:label>
@@ -24,7 +24,7 @@
         <perch:error for="email" type="format">
             <div class="alert alert-danger">Please check your email address.</div>
         </perch:error>
-        <perch:input type="email" id="email" required="true" label="Email" placeholder="Required – you@example.com" size="30" maxlength="100" antispam="email" />
+        <perch:input type="email" id="email" required label="Email" placeholder="Required – you@example.com" size="30" maxlength="100" antispam="email" />
     </div>
     <div class="hidden">
         <perch:label for="email_verification">Email Verification</perch:label>
@@ -39,7 +39,7 @@
         <perch:error for="message" type="required">
             <div class="alert alert-danger">Please add a message.</div>
         </perch:error>
-        <perch:input type="textarea" id="message" required="true" label="Message" antispam="body" />
+        <perch:input type="textarea" id="message" required label="Message" antispam="body" />
     </div>
 
     <perch:input type="cms" />
