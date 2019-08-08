@@ -11,7 +11,7 @@
   "//private": true,
   "scripts": {
     "dev": "encore dev",
-    "dev-server": "encore dev-server --config webpack.dev-server.config.js --hot --port 9009 --public actionbattery.xmdev.net:443",
+    "dev-server": "encore dev-server --config webpack.dev-server.config.js --hot --port 9009 --public dev.example.com:443",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "cypress open",
     "lint:js": "vue-cli-service lint --ext .js,.vue public/js",
