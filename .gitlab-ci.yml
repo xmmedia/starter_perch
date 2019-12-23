@@ -23,11 +23,17 @@ before_script:
   # the following line is optional (likely remove previous line)
   #- echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
+  # Taken from here: https://gist.github.com/kwk/55bb5b6a4b7457bef38d
+  # This forces dpkg to not call sync() after package extraction and speeds up install
+  - echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup
+  # We don't need and apt cache in a container or recommendations
+  - echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache
+  - echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf
   # Install packages
   - apt-get install gnupg2 build-essential libssl-dev -yqq
   - curl -sL https://deb.nodesource.com/setup_10.x | bash -
-  # Install git, the php image doesn't have installed
-  - apt-get install git zip unzip gcc g++ make nodejs -yqq
+  # Install libs the php image doesn't have installed
+  - apt-get install git zip unzip gcc g++ make nodejs rsync -yqq
   - alias nodejs=node
   # add package key for yarn
   - curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -54,14 +60,16 @@ deploy:
     # ensure based paths exist
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "mkdir -p $RELEASES $SHARED $SHARED/html/perch/resources"
     # sync files to release directory
-    - rsync --archive --stats --human-readable --no-perms --exclude ".git/" --exclude ".idea/" --exclude "node_modules/" -e "ssh -p $REMOTE_PORT" . $REMOTE_USER@$REMOTE_SERVER:$RELEASE
+    - rsync --archive --stats --human-readable --no-perms --exclude ".git/" --exclude ".idea/" --exclude "node_modules/" --exclude "cypress/" -e "ssh -p $REMOTE_PORT" . $REMOTE_USER@$REMOTE_SERVER:$RELEASE
     # copy config file into place
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cp -a $SHARED/config_private.php $RELEASE/html/perch/config/config_private.php"
     # link shared folders
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -rf $RELEASE/html/perch/resources; ln -s $SHARED/html/perch/resources $RELEASE/html/perch/resources; rm -rf $RELEASE/sessions; ln -s $SHARED/sessions $RELEASE/sessions"
-    # switch to new version; run composer on server; db migrations
-    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -f $REMOTE_BASE/current; ln -s $RELEASE $REMOTE_BASE/current"
+    # switch to new version
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "ln -sfn $RELEASE $REMOTE_BASE/current"
     # clear opcache
-    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cd $RELEASE; echo '<?php opcache_reset();' > html/opcache_reset.php; curl $HTTP_ROOT/opcache_reset.php; rm html/opcache_reset.php" || echo -e "\033[0;31mFAILURE unable to reset OPcache"
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cd $REMOTE_BASE/current; echo '<?php opcache_reset();' > html/opcache_reset.php; curl $HTTP_ROOT/opcache_reset.php; rm html/opcache_reset.php" || echo -e "\033[0;31mFAILURE unable to reset OPcache"
     # remove >3 releases
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "ls -1d $RELEASES/* | sort -rg | tail -n +4 | xargs /bin/rm -rf"
+    # success message
+    - echo "Deployment completed successfully. Release at $RELEASE"
