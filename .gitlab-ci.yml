@@ -2,7 +2,7 @@ stages:
   - deploy
 
 # Select image from https://hub.docker.com/_/php/
-image: php:7.2-cli
+image: php:7.3-cli
 
 # Select what we should cache
 cache:
