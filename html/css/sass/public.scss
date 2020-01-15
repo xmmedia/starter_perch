@@ -28,8 +28,27 @@ h4 {
     @apply mt-8 mb-2;
 }
 
+p {
+    @apply my-4;
+    &:first-of-type {
+        @apply mt-0;
+    }
+    &:last-of-type {
+        @apply mb-0;
+    }
+}
+
+ul, ol {
+    li {
+        @apply mb-4;
+        &:last-of-type {
+            @apply mb-0;
+        }
+    }
+}
+
 //reduce margin between headings and paragraphs
-p:first-of-type, h3 + p, h4 + p {
+h3 + p, h4 + p {
     @apply mt-0;
 }
 
