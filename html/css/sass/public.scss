@@ -79,6 +79,10 @@ h3 + p, h4 + p {
     }
 }
 
+.transition {
+    transition: all 0.25s ease;
+}
+
 // common styles
 @import "common/alerts",
     "common/content_alignment",
