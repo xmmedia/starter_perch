@@ -1,7 +1,5 @@
 'use strict';
 const path = require('path');
-const glob = require('glob-all');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function resolve (dir) {
@@ -83,37 +81,6 @@ module.exports = function (Encore) {
     ;
 
     if (Encore.isProduction()) {
-        // Custom PurgeCSS extractor for Tailwind that allows special characters in class names
-        class TailwindExtractor {
-            static extract(content) {
-                return content.match(/[A-z0-9-:\/]+/g) || [];
-            }
-        }
-
         Encore
-            .addPlugin(new PurgecssPlugin({
-                // Specify the locations of any files you want to scan for class names.
-                paths: glob.sync([
-                    path.join(__dirname, 'html/**/*.php'),
-                    path.join(__dirname, 'html/perch/templates/**/*.html'),
-                    path.join(__dirname, 'html/perch/templates/**/*.php'),
-                    path.join(__dirname, 'html/perch/addons/**/*.html'),
-                    path.join(__dirname, 'html/perch/addons/**/*.php'),
-                    path.join(__dirname, 'html/js/src/**/*.vue'),
-                    path.join(__dirname, 'html/js/src/**/*.js'),
-                ]),
-                extractors: [
-                    {
-                        extractor: TailwindExtractor,
-                        // Specify the file extensions to include when scanning for class names
-                        extensions: ['html', 'js', 'php', 'vue'],
-                    }
-                ],
-                whitelistPatterns: [
-                    // vue transition classes: https://vuejs.org/v2/guide/transitions.html#Transition-Classes
-                    /-enter/,
-                    /-leave/,
-                ],
-            }));
     }
 };
