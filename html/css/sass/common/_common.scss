@@ -8,10 +8,6 @@ a, .button-link {
     }
 }
 
-// re-add margin to p as it's reset in tailwind's normalize
-p {
-    margin: 1em 0;
-}
 //re-add list styles as tailwind removes them
 ul, ol {
     @apply pl-10;
