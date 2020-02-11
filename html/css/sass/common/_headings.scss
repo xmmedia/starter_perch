@@ -1,0 +1,44 @@
+h1, h2, h3, h4, h5, h6 {
+    @apply leading-tight font-bold;
+}
+
+// reset margins and text size on headings as tailwind removes them
+h1 {
+    @apply text-3xl;
+    margin: 0.67rem 0;
+}
+h2 {
+    @apply text-2xl;
+    margin: 0.83rem 0;
+}
+h3 {
+    @apply text-xl mt-8 mb-2;
+    margin: 1rem 0;
+}
+h4 {
+    @apply mt-8 mb-2;
+}
+h5 {
+    @apply text-sm;
+    margin: 1.67rem 0;
+}
+h6 {
+    @apply text-xs;
+    margin: 2.33rem 0;
+}
+
+//reduce margin between headings and paragraphs
+h3 + p, h4 + p {
+    @apply mt-0;
+}
+
+
+// make anchors that are inside headers look like the header, but underline when hovered
+h1, h2, h3, h4 {
+    a {
+        @apply no-underline text-inherit;
+        &:hover, &:active {
+            @apply underline text-inherit;
+        }
+    }
+}

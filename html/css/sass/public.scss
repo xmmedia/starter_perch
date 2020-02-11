@@ -34,13 +34,13 @@ ul, ol {
 @import "common/alerts",
     "common/content_alignment",
     "common/forms",
-    "common/modal";
+    "common/modal",
+    "common/headings";
 
 // public only styles
 @import "public/content",
     "public/buttons",
-    "public/header",
-    "public/headings";
+    "public/header";
 
 // page specific
 //@import ;
