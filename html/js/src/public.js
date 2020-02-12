@@ -3,7 +3,7 @@ import Vue from 'vue';
 import svg_icons from './component/svg_icons.vue';
 
 // SASS/CSS
-import '../../css/sass/public.scss';
+import '../../css/public.scss';
 
 // images
 import '../../images/icons-public.svg';
