@@ -1,4 +1,4 @@
-# robotstxt.org/
+# https://www.robotstxt.org/
 User-agent: *
 
 # @todo-perch
