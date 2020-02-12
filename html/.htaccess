@@ -348,7 +348,7 @@ Options -MultiViews
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{HTTP_HOST} !^www\. [NC]
-    # @todo will probably want to change this with the prefix of the dev site
+    # @todo-perch will probably want to change this with the prefix of the dev site
     RewriteCond %{HTTP_HOST} !^dev\. [NC]
     RewriteCond %{SERVER_ADDR} !=127.0.0.1
     RewriteCond %{SERVER_ADDR} !=::1
