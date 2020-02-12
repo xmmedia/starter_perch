@@ -3,7 +3,7 @@
 @tailwind components;
 /* purgecss end ignore */
 
-@import "common/common";
+@import "common";
 
 // global styles on the most common elements
 html {
@@ -11,16 +11,16 @@ html {
 }
 
 // common styles
-@import "common/alerts",
-    "common/content_alignment",
-    "common/forms",
-    "common/modal",
-    "common/headings";
+@import "alerts",
+    "content_alignment",
+    "forms",
+    "modal",
+    "headings";
 
 // public only styles
-@import "public/content",
-    "public/buttons",
-    "public/header";
+@import "content",
+    "buttons",
+    "header";
 
 // page specific
 //@import ;
