@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import svg_icons from './common/svg_icons.vue';
+import svg_icons from './component/svg_icons.vue';
 
 // SASS/CSS
 import '../../css/sass/public.scss';
