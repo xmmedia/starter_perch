@@ -1,16 +1,32 @@
 /* this file is for public and private/admin pages */
 
 a, .button-link {
-    @apply text-blue-500 underline;
-    transition: color 0.25s ease;
+    @apply text-blue-500 no-underline font-light;
+    transition: color 0.25s ease-in-out;
     &:hover, &:active {
-        @apply text-blue-600;
+        @apply underline text-blue-700;
+    }
+    &:disabled {
+        @apply opacity-75;
+        &:hover {
+            @apply no-underline cursor-default;
+        }
     }
 }
 
-//re-add list styles as tailwind removes them
+b, strong {
+    @apply font-bold;
+}
+
+// re-add list styles as tailwind removes them
 ul, ol {
     @apply pl-10;
+    li {
+        @apply mb-4;
+        &:last-of-type {
+            @apply mb-0;
+        }
+    }
 }
 ul {
     @apply list-disc;
@@ -18,7 +34,6 @@ ul {
 ol {
     @apply list-decimal;
 }
-
 address {
     @apply not-italic;
 }

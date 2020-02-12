@@ -10,26 +10,6 @@ html {
     @apply font-sans leading-normal text-gray-800;
 }
 
-a, .button-link {
-    @apply text-blue-600 no-underline font-light;
-    &:hover, &:active {
-        @apply underline;
-    }
-}
-
-ul, ol {
-    li {
-        @apply mb-4;
-        &:last-of-type {
-            @apply mb-0;
-        }
-    }
-}
-
-.transition {
-    transition: all 0.25s ease;
-}
-
 // common styles
 @import "common/alerts",
     "common/content_alignment",
