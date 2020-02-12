@@ -49,7 +49,7 @@ select {
 }
 
 .form-wrap {
-    @apply w-11/12 max-w-lg mx-auto my-4 p-4 rounded-sm shadow-md;
+    @apply w-11/12 max-w-lg mx-auto my-4 p-4 border border-gray-400 shadow-md;
 }
 
 .field-wrap {
@@ -58,7 +58,7 @@ select {
         @apply block mb-1;
     }
 }
-//flex-wrap will ensure help is on a separate line
+// flex-wrap will ensure help is on a separate line
 .field-wrap-checkbox {
     @apply flex flex-wrap items-center mb-4;
     label {
@@ -93,14 +93,14 @@ select {
 .field-wrap-readonly {
     @apply relative;
 
-    input {
-        @apply opacity-50;
-    }
-
     &:after {
         @apply absolute right-0 text-xs opacity-50;
         top: 0.5rem;
         content: "read-only";
+    }
+
+    input {
+        @apply opacity-50;
     }
 }
 
@@ -111,6 +111,14 @@ select {
     padding-left: 0.1em;
 }
 
+// these show up after the form buttons, outside the form tag
+// for extra actions, such as delete, that aren't part of the current form
+// but also would add clutter to add them as links on the record list
+// this is typically a <ul>
+// the actions here may or may not be inside a form
+.form-extra_actions {
+    @apply flex flex-col flex-wrap items-end justify-end list-none;
+}
 .form-action {
     @apply text-sm ml-4;
 }
