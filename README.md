@@ -16,4 +16,4 @@ Used to create new projects using the [Perch CMS](https://grabaperch.com/) at XM
 10. Run `webpack` or `webpack --watch` to compile JS & CSS files. (When going live, run `npm run build` instead.)
 11. Create Database and Import db_create.sql
 12. Set the appropriate permissions on `/perch/resources` (if needed).
-13. Login to Perch
+13. Sign in to Perch
