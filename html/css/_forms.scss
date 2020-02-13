@@ -43,7 +43,7 @@ select {
     @apply cursor-pointer;
 }
 [type=file] {
-    width: 100%;
+    @apply w-full;
 }
 
 .form-wrap {
