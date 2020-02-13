@@ -1,8 +1,7 @@
 /* this file is for public and private/admin pages */
 
 a, .button-link {
-    @apply text-blue-500 no-underline font-light;
-    transition: color 0.25s ease-in-out;
+    @apply text-blue-500 no-underline font-light transition-all duration-300 ease-in-out;
     &:hover, &:active {
         @apply underline text-blue-700;
     }
@@ -43,5 +42,5 @@ td {
 }
 
 .transition {
-    transition: all 0.25s ease;
+    @apply transition-all duration-300 ease-in-out;
 }

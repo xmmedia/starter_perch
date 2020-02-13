@@ -1,10 +1,10 @@
 // transitions, classes applied by Vue
 .md-enter-active,
 .md-leave-active {
-    transition: all 0.5s;
+   @apply transition-all duration-300;
 }
 .md-enter,
 .md-leave-active {
-    opacity: 0;
+    @apply opacity-0;
     transform: translateY(24px);
 }

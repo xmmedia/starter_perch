@@ -14,8 +14,7 @@
 [type=url],
 [type=color],
 textarea {
-    @apply w-full px-2 py-1 text-black border border-gray-400 rounded-sm bg-gray-200;
-    transition: background-color 0.25s ease;
+    @apply w-full px-2 py-1 text-black border border-gray-400 rounded-sm bg-gray-200 transition-colors duration-300 ease-in-out;
     &:focus {
         @apply border-gray-500 bg-gray-100;
     }
@@ -25,9 +24,8 @@ textarea {
     @apply align-top text-black;
 }
 select {
-    @apply w-full p-1 text-black border border-gray-400 rounded-sm bg-gray-200;
+    @apply w-full p-1 text-black border border-gray-400 rounded-sm bg-gray-200 transition-colors duration-300 ease-in-out;
     height: 2.14rem;
-    transition: background-color 0.25s ease;
     &:focus {
         @apply border-gray-500 bg-gray-100;
     }
