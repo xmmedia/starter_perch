@@ -67,8 +67,8 @@ deploy:
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "rm -rf $RELEASE/html/perch/resources; ln -s $SHARED/html/perch/resources $RELEASE/html/perch/resources; rm -rf $RELEASE/sessions; ln -s $SHARED/sessions $RELEASE/sessions"
     # switch to new version
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "ln -sfn $RELEASE $REMOTE_BASE/current"
-    # clear opcache
-    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "cd $REMOTE_BASE/current; echo '<?php opcache_reset();' > html/opcache_reset.php; curl $HTTP_ROOT/opcache_reset.php; rm html/opcache_reset.php" || echo -e "\033[0;31mFAILURE unable to reset OPcache"
+    # reload php-fpm (to reset cache)
+    - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "sudo /sbin/service php73-php-fpm reload"
     # remove >3 releases
     - ssh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_SERVER "ls -1d $RELEASES/* | sort -rg | tail -n +4 | xargs /bin/rm -rf"
     # success message
