@@ -2,7 +2,11 @@
 <perch:form id="contact" method="post" action="#sent" app="perch_forms" accept-charset="utf-8">
     <perch:success>
          <div class="alert alert-success">
-             <perch:content id="thankyou" label="Success Message" type="text" />
+             <perch:if exists="thankyou">
+                 <perch:content id="thankyou" label="Success Message" type="text" />
+             <perch:else>
+                 Thank you for reaching out. We will be in touch within 2 business days.
+             </perch:if>
          </div>
     </perch:success>
     <perch:error for="all" type="general">
